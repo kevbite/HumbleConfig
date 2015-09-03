@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace HumbleConfig.ConfigurationManager.Tests.ConfigurationManagerSourceTest
+namespace HumbleConfig.ConfigurationManager.Tests.ConfigurationManagerSourceTests
 {
     [TestFixture]
     public class ConfigurationManagerSourceTestsForExistingAppSettingKey

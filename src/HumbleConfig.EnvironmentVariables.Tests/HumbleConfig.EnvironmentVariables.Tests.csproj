@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D9C2A7B-75F2-483C-8DA7-9C6D5250BC8B}</ProjectGuid>
+    <ProjectGuid>{7660560D-727C-4ABE-B741-94D2265417FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HumbleConfig.ConfigurationManager.Tests</RootNamespace>
-    <AssemblyName>HumbleConfig.ConfigurationManager.Tests</AssemblyName>
+    <RootNamespace>HumbleConfig.EnvironmentVariables.Tests</RootNamespace>
+    <AssemblyName>HumbleConfig.EnvironmentVariables.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,18 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationManagerSourceTests\ConfigurationManagerSourceTestsForNoneExistingAppSettingKey.cs" />
-    <Compile Include="ConfigurationManagerSourceTests\ConfigurationManagerSourceTestsForExistingAppSettingKey.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="EnvironmentVariablesSourceTests\EnvironmentVariablesSourceTestsForNoneExistingEnvironmentVariable.cs" />
+    <Compile Include="EnvironmentVariablesSourceTests\EnvironmentVariablesSourceTestsForExistingEnvironmentVariable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HumbleConfig.ConfigurationManager\HumbleConfig.ConfigurationManager.csproj">
-      <Project>{A1CA7848-F8B5-41AE-9AE8-19D1030B926B}</Project>
-      <Name>HumbleConfig.ConfigurationManager</Name>
+    <ProjectReference Include="..\HumbleConfig.EnvironmentVariables\HumbleConfig.EnvironmentVariables.csproj">
+      <Project>{8C21C807-5FBB-46A6-AFE3-15028D257BAB}</Project>
+      <Name>HumbleConfig.EnvironmentVariables</Name>
     </ProjectReference>
     <ProjectReference Include="..\HumbleConfig\HumbleConfig.csproj">
       <Project>{B04CB40D-08D8-44C6-B66E-F1ED0E97E507}</Project>

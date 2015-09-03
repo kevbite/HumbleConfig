@@ -2,7 +2,7 @@
 {
     public static class ConfigurationManagerExtensions
     {
-        public static Configuration AddEnvironmentVariables(this Configuration configuration)
+        public static Configuration AddConfigurationManager(this Configuration configuration)
         {
             configuration.AddConfigurationSource(new ConfigurationManagerSource());
 

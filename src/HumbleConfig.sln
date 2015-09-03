@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumbleConfig.ConfigurationM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumbleConfig.ConfigurationManager.Tests", "HumbleConfig.ConfigurationManager.Tests\HumbleConfig.ConfigurationManager.Tests.csproj", "{7D9C2A7B-75F2-483C-8DA7-9C6D5250BC8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumbleConfig.EnvironmentVariables", "HumbleConfig.EnvironmentVariables\HumbleConfig.EnvironmentVariables.csproj", "{8C21C807-5FBB-46A6-AFE3-15028D257BAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumbleConfig.EnvironmentVariables.Tests", "HumbleConfig.EnvironmentVariables.Tests\HumbleConfig.EnvironmentVariables.Tests.csproj", "{7660560D-727C-4ABE-B741-94D2265417FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{7D9C2A7B-75F2-483C-8DA7-9C6D5250BC8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D9C2A7B-75F2-483C-8DA7-9C6D5250BC8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D9C2A7B-75F2-483C-8DA7-9C6D5250BC8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C21C807-5FBB-46A6-AFE3-15028D257BAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C21C807-5FBB-46A6-AFE3-15028D257BAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C21C807-5FBB-46A6-AFE3-15028D257BAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C21C807-5FBB-46A6-AFE3-15028D257BAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7660560D-727C-4ABE-B741-94D2265417FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7660560D-727C-4ABE-B741-94D2265417FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7660560D-727C-4ABE-B741-94D2265417FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7660560D-727C-4ABE-B741-94D2265417FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

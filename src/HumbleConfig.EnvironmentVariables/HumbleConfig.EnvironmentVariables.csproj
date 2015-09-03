@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D9C2A7B-75F2-483C-8DA7-9C6D5250BC8B}</ProjectGuid>
+    <ProjectGuid>{8C21C807-5FBB-46A6-AFE3-15028D257BAB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HumbleConfig.ConfigurationManager.Tests</RootNamespace>
-    <AssemblyName>HumbleConfig.ConfigurationManager.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <RootNamespace>HumbleConfig.EnvironmentVariables</RootNamespace>
+    <AssemblyName>HumbleConfig.EnvironmentVariables</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,37 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Ploeh.AutoFixture, Version=3.31.3.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoFixture.3.31.3\lib\net40\Ploeh.AutoFixture.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationManagerSourceTests\ConfigurationManagerSourceTestsForNoneExistingAppSettingKey.cs" />
-    <Compile Include="ConfigurationManagerSourceTests\ConfigurationManagerSourceTestsForExistingAppSettingKey.cs" />
+    <Compile Include="EnvironmentVariablesSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HumbleConfig.ConfigurationManager\HumbleConfig.ConfigurationManager.csproj">
-      <Project>{A1CA7848-F8B5-41AE-9AE8-19D1030B926B}</Project>
-      <Name>HumbleConfig.ConfigurationManager</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HumbleConfig\HumbleConfig.csproj">
       <Project>{B04CB40D-08D8-44C6-B66E-F1ED0E97E507}</Project>
       <Name>HumbleConfig</Name>
