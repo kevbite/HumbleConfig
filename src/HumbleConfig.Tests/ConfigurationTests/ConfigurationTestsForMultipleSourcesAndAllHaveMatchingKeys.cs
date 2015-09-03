@@ -9,7 +9,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
     public class ConfigurationTestsForMultipleSourcesAndAllHaveMatchingKeys
     {
         private Configuration _configuration;
-        private string[] _values;
+        private string _value;
 
         private ConfigurationSourceStub _source1;
         private ConfigurationSourceStub _source2;
@@ -23,25 +23,25 @@ namespace HumbleConfig.Tests.ConfigurationTests
             _configuration = new Configuration();
 
             _source1 = new ConfigurationSourceStub();
-            _source1.AppSettings.Add(_key, fixture.Create<string[]>());
+            _source1.AppSettings.Add(_key, fixture.Create<string>());
 
             _source2 = new ConfigurationSourceStub();
-            _source2.AppSettings.Add(_key, fixture.Create<string[]>());
+            _source2.AppSettings.Add(_key, fixture.Create<string>());
 
             _configuration.AddConfigurationSource(_source1);
             _configuration.AddConfigurationSource(_source2);
         }
 
         [SetUp]
-        public void WhenGettingAnAppSettings()
+        public void WhenGettingAnAppSetting()
         {
-            _values = _configuration.GetAppSettings(_key);
+            _value = _configuration.GetAppSetting(_key);
         }
 
         [Test]
         public void ThenTheValueReturnedMatchesTheFirstSource()
         {
-            Assert.That(_values, Is.EqualTo(_source1.AppSettings[_key]));
+            Assert.That(_value, Is.EqualTo(_source1.AppSettings[_key]));
         }
     }
 }

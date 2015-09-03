@@ -2,7 +2,7 @@
 {
     public interface IConfigurationSource
     {
-        bool TryGetAppSettings(string key, out string[] values);
+        bool TryGetAppSetting(string key, out string value);
 
         bool TryGetConnectionString(string key, out string value);
     }

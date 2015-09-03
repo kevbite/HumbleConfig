@@ -7,14 +7,14 @@ namespace HumbleConfig
     {
         private readonly List<IConfigurationSource> _configurationSources = new List<IConfigurationSource>();
         
-        public string[] GetAppSettings(string key)
+        public string GetAppSetting(string key)
         {
             foreach (var configurationSource in _configurationSources)
             {
-                string[] values;
-                if (configurationSource.TryGetAppSettings(key, out values))
+                string value;
+                if (configurationSource.TryGetAppSetting(key, out value))
                 {
-                    return values;
+                    return value;
                 }
             }
 

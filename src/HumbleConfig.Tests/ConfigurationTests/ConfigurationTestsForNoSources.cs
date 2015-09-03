@@ -6,7 +6,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
     public class ConfigurationTestsForNoSources
     {
         private Configuration _configuration;
-        private string[] _values;
+        private string _value;
 
         [TestFixtureSetUp]
         public void GivenAConfigurationWithNoSourcesLoaded()
@@ -15,15 +15,15 @@ namespace HumbleConfig.Tests.ConfigurationTests
         }
 
         [SetUp]
-        public void WhenGettingAnAppSettings()
+        public void WhenGettingAnAppSetting()
         {
-            _values = _configuration.GetAppSettings("key");
+            _value = _configuration.GetAppSetting("key");
         }
 
         [Test]
         public void ThenTheReturnValueIsNull()
         {
-            Assert.That(_values, Is.Null);
+            Assert.That(_value, Is.Null);
         }
     }
 }

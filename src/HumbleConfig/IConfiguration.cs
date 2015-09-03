@@ -2,7 +2,7 @@
 {
     public interface IConfiguration
     {
-        string[] GetAppSettings(string key);
+        string GetAppSetting(string key);
 
         string GetConnectionString(string key);
     }
