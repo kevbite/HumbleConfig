@@ -4,6 +4,8 @@
 
 HumbleConfig allows developers to concentrate on writing the application instead of managing all the configuration locations.
 
+[![install from nuget](http://img.shields.io/nuget/v/HumbleConfig.svg?style=flat-square)](https://www.nuget.org/packages/HumbleConfig)[![downloads](http://img.shields.io/nuget/dt/HumbleConfig.svg?style=flat-square)](https://www.nuget.org/packages/HumbleConfig)
+
 ### How to use it?
 First, create an `Configuration` instance:
 ```csharp
