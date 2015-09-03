@@ -5,7 +5,7 @@
 HumbleConfig allows developers to concentrate on writing the application instead of managing all the configuration locations.
 
 [![install from nuget](http://img.shields.io/nuget/v/HumbleConfig.svg?style=flat-square)](https://www.nuget.org/packages/HumbleConfig)[![downloads](http://img.shields.io/nuget/dt/HumbleConfig.svg?style=flat-square)](https://www.nuget.org/packages/HumbleConfig)
-
+[![Build status](https://ci.appveyor.com/api/projects/status/bodd6hrcoltpco6i/branch/master?svg=true)](https://ci.appveyor.com/project/kevbite/humbleconfig/branch/master)
 ### How to use it?
 First, create an `Configuration` instance:
 ```csharp
