@@ -38,6 +38,6 @@
   
   deploy:
     - provider: Environment
-      name: NugGet.org
+      name: NuGet.org
       on:
         branch: master
