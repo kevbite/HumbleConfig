@@ -56,6 +56,7 @@
     <Compile Include="ConfigurationTests\ConfigurationTestsForNoSources.cs" />
     <Compile Include="InMemory\InMemorySourceTests\InMemorySourceTestsSourceTestsForExistingAppSettingKey.cs" />
     <Compile Include="InMemory\InMemorySourceTests\InMemorySourceTestsForNoneExistingAppSettingKey.cs" />
+    <Compile Include="KeyFormatters\DefaultKeyFormatterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stubs\ConfigurationSourceStub.cs" />
   </ItemGroup>

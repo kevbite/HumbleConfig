@@ -31,5 +31,10 @@ namespace HumbleConfig
         {
             _configurationSources.Add(configurationSource);
         }
+
+        public void SetKeyFormatter()
+        {
+            
+        }
     }
 }
