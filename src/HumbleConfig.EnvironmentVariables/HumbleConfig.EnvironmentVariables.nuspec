@@ -7,7 +7,8 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Humble Config</description>
+	<description>HumbleConfig is a simple abstraction on top of multiple config sources</description>
+	<projectUrl>https://github.com/kevbite/HumbleConfig/</projectUrl>
     <releaseNotes>Environment Variables Source for Humble Config</releaseNotes>
     <copyright>Copyright HumbleConfig 2015</copyright>
     <tags>Humble Config Environment Variables</tags>
