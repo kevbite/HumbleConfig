@@ -9,7 +9,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<description>HumbleConfig is a simple abstraction on top of multiple config sources</description>
 	<projectUrl>https://github.com/kevbite/HumbleConfig/</projectUrl>
-    <releaseNotes>Environment Variables Source for Humble Config</releaseNotes>
+	<iconUrl>https://raw.githubusercontent.com/kevbite/HumbleConfig/master/HumbleConfig.png</iconUrl>
+	<releaseNotes>Environment Variables Source for Humble Config</releaseNotes>
     <copyright>Copyright HumbleConfig 2015</copyright>
     <tags>Humble Config Environment Variables</tags>
   </metadata>
