@@ -17,7 +17,7 @@ namespace HumbleConfig.FunctionalTests
         {
             _configuration = new Configuration()
                 .WithKeyPrefixer("HumbleConfig:")
-                .AddInMemory(new Dictionary<string, string>() { { "HumbleConfig:Key1", "InMemory"} });
+                .AddInMemory(new Dictionary<string, object>() { { "HumbleConfig:Key1", "InMemory"} });
         }
 
         [SetUp]

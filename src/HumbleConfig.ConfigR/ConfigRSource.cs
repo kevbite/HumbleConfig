@@ -11,9 +11,14 @@ namespace HumbleConfig.ConfigR
             _config = config;
         }
 
-        public bool TryGetAppSetting(string key, out string value)
+        public bool TryGetAppSetting<T>(string key, out T value)
         {
-            return _config.TryGetValue(key, out value);
+            object temp;
+            var result = _config.TryGetValue(key, out temp);
+
+            value = result ? (T)temp : default(T);
+
+            return result;
         }
     }
 }

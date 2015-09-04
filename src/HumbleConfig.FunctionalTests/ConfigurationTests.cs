@@ -36,7 +36,7 @@ namespace HumbleConfig.FunctionalTests
             _configuration = new Configuration()
                 .AddEnvironmentVariables()
                 .AddConfigurationManager()
-                .AddInMemory(new Dictionary<string, string>() { {key5, "InMemory"} })
+                .AddInMemory(new Dictionary<string, object>() { {key5, "InMemory"} })
                 .AddConfigR();
         }
 

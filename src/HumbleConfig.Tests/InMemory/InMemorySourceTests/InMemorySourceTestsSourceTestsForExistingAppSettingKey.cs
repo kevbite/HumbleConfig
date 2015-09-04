@@ -12,13 +12,14 @@ namespace HumbleConfig.Tests.InMemory.InMemorySourceTests
         private InMemorySource _source;
         private bool _result;
         private string _value;
-        private Dictionary<string, string> _appSettings;
+        private Dictionary<string, object> _appSettings;
         private string _key;
 
         [TestFixtureSetUp]
         public void InMemorySourceTestsWithExistingAppSettingKey()
         {
-            _appSettings = new Fixture().Create<Dictionary<string, string>>();
+            _appSettings = new Fixture().Create<Dictionary<string, string>>()
+                .ToDictionary(x => x.Key, x => (object)x.Value);
             _key = _appSettings.Keys.First();
 
             _source = new InMemorySource(_appSettings);

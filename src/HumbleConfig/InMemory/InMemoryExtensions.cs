@@ -4,7 +4,7 @@ namespace HumbleConfig.InMemory
 {
     public static class InMemoryExtensions
     {
-        public static Configuration AddInMemory(this Configuration configuration, IDictionary<string, string> appSettings)
+        public static Configuration AddInMemory(this Configuration configuration, IDictionary<string, object> appSettings)
         {
             configuration.AddConfigurationSource(new InMemorySource(appSettings));
 

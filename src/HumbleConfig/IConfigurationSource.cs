@@ -2,6 +2,6 @@
 {
     public interface IConfigurationSource
     {
-        bool TryGetAppSetting(string key, out string value);
+        bool TryGetAppSetting<T>(string key, out T value);
     }
 }

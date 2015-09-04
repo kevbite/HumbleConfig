@@ -4,9 +4,11 @@ namespace HumbleConfig.EnvironmentVariables
 {
     public class EnvironmentVariablesSource : IConfigurationSource
     {
-        public bool TryGetAppSetting(string key, out string value)
+        public bool TryGetAppSetting<T>(string key, out T value)
         {
-            value = Environment.GetEnvironmentVariable(key);
+            var environmentValue = Environment.GetEnvironmentVariable(key);
+
+            value = (T) Convert.ChangeType(environmentValue, typeof (T));
 
             return value != null;
         }

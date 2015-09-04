@@ -14,7 +14,7 @@ namespace HumbleConfig.Tests.InMemory.InMemorySourceTests
         [TestFixtureSetUp]
         public void InMemorySourceTestsWithNoneExistingAppSettingKey()
         {
-            _source = new InMemorySource(new Dictionary<string, string>());
+            _source = new InMemorySource(new Dictionary<string, object>());
         }
 
         [SetUp]
