@@ -18,6 +18,9 @@ PM> Install-Package HumbleConfig.ConfigurationManager
 ```powershell
 PM> Install-Package HumbleConfig.EnvironmentVariables
 ```
+```powershell
+PM> Install-Package HumbleConfig.ConfigR
+```
 
 ### How to use it?
 First, create an `Configuration` instance:
@@ -27,7 +30,8 @@ var configuration = new Configuration();
 Then, configure the sources for configuration:
 ```csharp
 configuration.AddEnvironmentVariables()
-             .AddConfigurationManager();
+             .AddConfigurationManager()
+			 .AddConfigR();
 ```
 We can also add some default values by using a InMemory source:
 ```csharp
