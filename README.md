@@ -6,6 +6,19 @@ HumbleConfig allows developers to concentrate on writing the application instead
 
 [![install from nuget](http://img.shields.io/nuget/v/HumbleConfig.svg?style=flat-square)](https://www.nuget.org/packages/HumbleConfig)[![downloads](http://img.shields.io/nuget/dt/HumbleConfig.svg?style=flat-square)](https://www.nuget.org/packages/HumbleConfig)
 [![Build status](https://ci.appveyor.com/api/projects/status/bodd6hrcoltpco6i/branch/master?svg=true)](https://ci.appveyor.com/project/kevbite/humbleconfig/branch/master)
+
+### Installing packages
+
+```powershell
+PM> Install-Package HumbleConfig
+```
+```powershell
+PM> Install-Package HumbleConfig.ConfigurationManager
+```
+```powershell
+PM> Install-Package HumbleConfig.EnvironmentVariables
+```
+
 ### How to use it?
 First, create an `Configuration` instance:
 ```csharp
@@ -44,3 +57,11 @@ To setup this the key prefixer on our configuration object we just call `WithKey
 ```csharp
 configuration.WithKeyPrefixer("HumbleConfig:")
 ```
+
+### Contributing
+
+ 1. Fork
+ 1. Hack!
+ 1. Pull Request.
+
+###
