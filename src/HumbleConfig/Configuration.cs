@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using HumbleConfig.KeyFormatters;
 
 namespace HumbleConfig
 {
     public class Configuration : IConfiguration
     {
         private readonly List<IConfigurationSource> _configurationSources = new List<IConfigurationSource>();
-        
+        private IKeyFormatter _keyFormatter = new DefaultKeyFormatter();
+
         public string GetAppSetting(string key)
         {
+            var formattedKey = _keyFormatter.FormatKey(key);
             foreach (var configurationSource in _configurationSources)
             {
                 string value;
-                if (configurationSource.TryGetAppSetting(key, out value))
+                if (configurationSource.TryGetAppSetting(formattedKey, out value))
                 {
                     return value;
                 }
@@ -32,9 +35,9 @@ namespace HumbleConfig
             _configurationSources.Add(configurationSource);
         }
 
-        public void SetKeyFormatter()
+        public void SetKeyFormatter(IKeyFormatter keyFormatter)
         {
-            
+            _keyFormatter = keyFormatter;
         }
     }
 }

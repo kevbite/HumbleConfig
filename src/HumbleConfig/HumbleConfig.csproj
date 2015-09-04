@@ -48,6 +48,7 @@
     <Compile Include="InMemory\InMemoryExtensions.cs" />
     <Compile Include="InMemory\InMemorySource.cs" />
     <Compile Include="KeyFormatters\DefaultKeyFormatter.cs" />
+    <Compile Include="KeyFormatters\KeyPrefixer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
