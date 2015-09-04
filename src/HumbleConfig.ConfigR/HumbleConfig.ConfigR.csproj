@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{19879791-BB47-4E82-8276-402990317E1E}</ProjectGuid>
+    <ProjectGuid>{D0E7A0E1-B3B7-4B09-8AE7-C971A87638E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HumbleConfig.FunctionalTests</RootNamespace>
-    <AssemblyName>HumbleConfig.FunctionalTests</AssemblyName>
+    <RootNamespace>HumbleConfig.ConfigR</RootNamespace>
+    <AssemblyName>HumbleConfig.ConfigR</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,16 +30,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ConfigR, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ConfigR.0.12.0\lib\net45\ConfigR.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    <Reference Include="Roslyn.Compilers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Roslyn.Compilers.Common.1.2.20906.2\lib\net45\Roslyn.Compilers.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ploeh.AutoFixture, Version=3.31.3.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoFixture.3.31.3\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+    <Reference Include="Roslyn.Compilers.CSharp, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Roslyn.Compilers.CSharp.1.2.20906.2\lib\net45\Roslyn.Compilers.CSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ScriptCs.Contracts, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScriptCs.Contracts.0.12.0\lib\net45\ScriptCs.Contracts.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ScriptCs.Core, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScriptCs.Core.0.12.0\lib\net45\ScriptCs.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ScriptCs.Engine.Roslyn, Version=0.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScriptCs.Engine.Roslyn.0.12.0\lib\net45\ScriptCs.Engine.Roslyn.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -53,30 +73,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationTestsWithKeyPrefixer.cs" />
-    <Compile Include="ConfigurationTests.cs" />
+    <Compile Include="ConfigRSource.cs" />
+    <Compile Include="ConfigRExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="HumbleConfig.FunctionalTests.dll.csx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HumbleConfig.ConfigR\HumbleConfig.ConfigR.csproj">
-      <Project>{D0E7A0E1-B3B7-4B09-8AE7-C971A87638E4}</Project>
-      <Name>HumbleConfig.ConfigR</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HumbleConfig.ConfigurationManager\HumbleConfig.ConfigurationManager.csproj">
-      <Project>{A1CA7848-F8B5-41AE-9AE8-19D1030B926B}</Project>
-      <Name>HumbleConfig.ConfigurationManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HumbleConfig.EnvironmentVariables\HumbleConfig.EnvironmentVariables.csproj">
-      <Project>{8C21C807-5FBB-46A6-AFE3-15028D257BAB}</Project>
-      <Name>HumbleConfig.EnvironmentVariables</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HumbleConfig\HumbleConfig.csproj">
       <Project>{B04CB40D-08D8-44C6-B66E-F1ED0E97E507}</Project>
       <Name>HumbleConfig</Name>

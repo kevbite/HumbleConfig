@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HumbleConfig.ConfigR;
 using HumbleConfig.ConfigurationManager;
 using HumbleConfig.EnvironmentVariables;
 using HumbleConfig.InMemory;
@@ -17,12 +18,14 @@ namespace HumbleConfig.FunctionalTests
         private string key3 = "key3";
         private string key4 = "key4";
         private string key5 = "key5";
+        private string key6 = "key6";
 
         private string _key1Actual;
         private string _key2Actual;
         private string _key3Actual;
         private string _key4Actual;
         private string _key5Actual;
+        private string _key6Actual;
 
         [TestFixtureSetUp]
         public void GivenConfigurationWithEnvironmentVaribleAndConfigurationManager()
@@ -33,7 +36,8 @@ namespace HumbleConfig.FunctionalTests
             _configuration = new Configuration()
                 .AddEnvironmentVariables()
                 .AddConfigurationManager()
-                .AddInMemory(new Dictionary<string, string>() { {key5, "InMemory"} });
+                .AddInMemory(new Dictionary<string, string>() { {key5, "InMemory"} })
+                .AddConfigR();
         }
 
         [SetUp]
@@ -44,6 +48,7 @@ namespace HumbleConfig.FunctionalTests
             _key3Actual = _configuration.GetAppSetting(key3);
             _key4Actual = _configuration.GetAppSetting(key4);
             _key5Actual = _configuration.GetAppSetting(key5);
+            _key6Actual = _configuration.GetAppSetting(key6);
         }
 
         [Test]
@@ -74,6 +79,12 @@ namespace HumbleConfig.FunctionalTests
         public void ThenKey5PullsFromInMemory()
         {
             Assert.That(_key5Actual, Is.EqualTo("InMemory"));
+        }
+
+        [Test]
+        public void ThenKey6PullsFromConfigR()
+        {
+            Assert.That(_key6Actual, Is.EqualTo("ConfigR"));
         }
     }
 }

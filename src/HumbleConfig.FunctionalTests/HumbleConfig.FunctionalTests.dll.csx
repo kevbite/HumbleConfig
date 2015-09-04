@@ -1,0 +1,1 @@
+﻿Add("key6", "ConfigR")
