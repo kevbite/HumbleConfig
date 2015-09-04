@@ -44,6 +44,8 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IConfigurationSource.cs" />
+    <Compile Include="InMemory\InMemoryExtensions.cs" />
+    <Compile Include="InMemory\InMemorySource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

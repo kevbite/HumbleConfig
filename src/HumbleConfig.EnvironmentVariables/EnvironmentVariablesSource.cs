@@ -10,10 +10,5 @@ namespace HumbleConfig.EnvironmentVariables
 
             return value != null;
         }
-
-        public bool TryGetConnectionString(string key, out string value)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

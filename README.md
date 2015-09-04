@@ -9,14 +9,21 @@ HumbleConfig allows developers to concentrate on writing the application instead
 ### How to use it?
 First, create an `Configuration` instance:
 ```csharp
-var configuration = new Configuration();
+    var configuration = new Configuration();
 ```
 Then, configure the sources for configuration:
 ```csharp
-configuration.AddEnvironmentVariables()
-             .AddConfigurationManager();
+    configuration.AddEnvironmentVariables()
+                 .AddConfigurationManager();
 ```
-Once we're happy we can pull out an app setting:
+We can also add some default values by using a InMemory source:
 ```csharp
-var value = configuration.GetAppSetting("key");
+    var defaults = new Dictionary<string, string>() { {"UserName", "Kevin.Smith"} };
+
+    configuration.AddInMemory(defaults);
 ```
+Once we're happy with our configuration we can pull out an app setting:
+```csharp
+    var value = configuration.GetAppSetting("key");
+```
+
