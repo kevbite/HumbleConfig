@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<description>HumbleConfig is a simple abstraction on top of multiple config sources. This package includes the config source of ConfigR</description>
+	<projectUrl>https://github.com/kevbite/HumbleConfig/</projectUrl>
+	<iconUrl>https://raw.githubusercontent.com/kevbite/HumbleConfig/master/HumbleConfig.png</iconUrl>
+    <releaseNotes>ConfigR Source for Humble Config</releaseNotes>
+    <copyright>Copyright HumbleConfig 2015</copyright>
+    <tags>Humble Config ConfigR</tags>
+  </metadata>
+</package>
