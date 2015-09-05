@@ -43,12 +43,12 @@ namespace HumbleConfig.FunctionalTests
         [SetUp]
         public void WhenGettingAppSettings()
         {
-            _key1Actual = _configuration.GetAppSetting(key1);
-            _key2Actual = _configuration.GetAppSetting(key2);
-            _key3Actual = _configuration.GetAppSetting(key3);
-            _key4Actual = _configuration.GetAppSetting(key4);
-            _key5Actual = _configuration.GetAppSetting(key5);
-            _key6Actual = _configuration.GetAppSetting(key6);
+            _key1Actual = _configuration.GetAppSetting<string>(key1);
+            _key2Actual = _configuration.GetAppSetting<string>(key2);
+            _key3Actual = _configuration.GetAppSetting<string>(key3);
+            _key4Actual = _configuration.GetAppSetting<string>(key4);
+            _key5Actual = _configuration.GetAppSetting<string>(key5);
+            _key6Actual = _configuration.GetAppSetting<string>(key6);
         }
 
         [Test]

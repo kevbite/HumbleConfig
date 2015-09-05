@@ -9,19 +9,19 @@ namespace HumbleConfig
         private readonly List<IConfigurationSource> _configurationSources = new List<IConfigurationSource>();
         private IKeyFormatter _keyFormatter = new DefaultKeyFormatter();
 
-        public string GetAppSetting(string key)
+        public TValue GetAppSetting<TValue>(string key)
         {
             var formattedKey = _keyFormatter.FormatKey(key);
             foreach (var configurationSource in _configurationSources)
             {
-                string value;
+                TValue value;
                 if (configurationSource.TryGetAppSetting(formattedKey, out value))
                 {
                     return value;
                 }
             }
 
-            return null;
+            return default(TValue);
         }
 
 

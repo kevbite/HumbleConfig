@@ -4,8 +4,7 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    [TestFixture]
-    public class ConfigurationTestsForKeyFormatter
+    public class ConfigurationTestsForKeyFormatter<TValue> : ValueTests<TValue>
     {
         private readonly Fixture _fixture = new Fixture();
         private string _formattedKey;
@@ -33,13 +32,13 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [SetUp]
         public void WhenGettingAnAppSetting()
         {
-            _configuration.GetAppSetting(_key);
+            _configuration.GetAppSetting<TValue>(_key);
         }
 
         [Test]
         public void ThenTheSourceIsCalledWithTheFormattedKey()
         {
-            string temp;
+            TValue temp;
             _source.Verify(x => x.TryGetAppSetting(_formattedKey, out temp), Times.Once);
         }
     }

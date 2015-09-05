@@ -8,18 +8,7 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests
 {
-    [TestFixture(typeof(bool))]
-    [TestFixture(typeof(byte))]
-    [TestFixture(typeof(char))]
-    [TestFixture(typeof(decimal))]
-    [TestFixture(typeof(double))]
-    [TestFixture(typeof(float))]
-    [TestFixture(typeof(int))]
-    [TestFixture(typeof(long))]
-    [TestFixture(typeof(sbyte))]
-    [TestFixture(typeof(short))]
-    [TestFixture(typeof(string))]
-    public abstract class ConfigurationSourceTestsForExistingKey<TValue, TConfigurationSourceFactory> where TConfigurationSourceFactory : IConfigurationSourceFactory, new ()
+    public abstract class ConfigurationSourceTestsForExistingKey<TValue, TConfigurationSourceFactory> : ValueTests<TValue> where TConfigurationSourceFactory : IConfigurationSourceFactory, new ()
     {
         private IConfigurationSource _source;
         private bool _result;
@@ -55,5 +44,21 @@ namespace HumbleConfig.Tests
         {
             Assert.That(_result, Is.True);
         }
+    }
+
+    [TestFixture(typeof (bool))]
+    [TestFixture(typeof (byte))]
+    [TestFixture(typeof (char))]
+    [TestFixture(typeof (decimal))]
+    [TestFixture(typeof (double))]
+    [TestFixture(typeof (float))]
+    [TestFixture(typeof (int))]
+    [TestFixture(typeof (long))]
+    [TestFixture(typeof (sbyte))]
+    [TestFixture(typeof (short))]
+    [TestFixture(typeof (string))]
+    public abstract class ValueTests<TValue>
+    {
+        
     }
 }

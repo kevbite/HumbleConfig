@@ -17,7 +17,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [SetUp]
         public void WhenGettingAnAppSetting()
         {
-            _value = _configuration.GetAppSetting("key");
+            _value = _configuration.GetAppSetting<string>("key");
         }
 
         [Test]
