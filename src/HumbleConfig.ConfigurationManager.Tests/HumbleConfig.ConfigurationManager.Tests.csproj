@@ -36,6 +36,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,6 +58,10 @@
     <ProjectReference Include="..\HumbleConfig.ConfigurationManager\HumbleConfig.ConfigurationManager.csproj">
       <Project>{A1CA7848-F8B5-41AE-9AE8-19D1030B926B}</Project>
       <Name>HumbleConfig.ConfigurationManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HumbleConfig.Tests\HumbleConfig.Tests.csproj">
+      <Project>{27C04368-FC7A-4D87-8F60-A14FE965FB71}</Project>
+      <Name>HumbleConfig.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\HumbleConfig\HumbleConfig.csproj">
       <Project>{B04CB40D-08D8-44C6-B66E-F1ED0E97E507}</Project>

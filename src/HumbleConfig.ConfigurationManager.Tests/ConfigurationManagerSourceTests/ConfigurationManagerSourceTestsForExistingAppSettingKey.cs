@@ -1,38 +1,27 @@
-﻿using NUnit.Framework;
+﻿using System.Configuration;
+using HumbleConfig.Tests;
+using NUnit.Framework;
 
 namespace HumbleConfig.ConfigurationManager.Tests.ConfigurationManagerSourceTests
 {
     [TestFixture]
-    public class ConfigurationManagerSourceTestsForExistingAppSettingKey
+    public class ConfigurationManagerSourceTestsForExistingAppSettingKey<TValue> : ConfigurationSourceTestsForExistingKey<TValue, ConfigurationManagerFactory>
     {
-        private ConfigurationManagerSource _source;
-        private bool _result;
-        private string _value;
+       
+    }
 
-        [TestFixtureSetUp]
-        public void ConfigurationManagerSourceTestsWithExistingAppSettingKey()
+    public class ConfigurationManagerFactory : IConfigurationSourceFactory
+    {
+        public IConfigurationSource Create<TValue>(string key, TValue value)
         {
-            _source = new ConfigurationManagerSource();
-        }
-        
-        [SetUp]
-        public void WhenTryingToGetTheAppSettings()
-        {
-            _result = _source.TryGetAppSetting("TestKey", out _value);
-        }
-    
-        [Test]
-        public void ThenTheCorrectValueIsReturned()
-        {
-            var expected = "TestValue";
+            var config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var appSettingsSection = (AppSettingsSection)config.GetSection("appSettings");
+            appSettingsSection.Settings.Clear();
+            appSettingsSection.Settings.Add(key, value.ToString());
+            config.Save();
+            System.Configuration.ConfigurationManager.RefreshSection("appSettings");
 
-            Assert.That(_value, Is.EqualTo(expected));
-        }
-
-        [Test]
-        public void ThenTheResultIsTrue()
-        {
-            Assert.That(_result, Is.True);
+            return new ConfigurationManagerSource();
         }
     }
 }

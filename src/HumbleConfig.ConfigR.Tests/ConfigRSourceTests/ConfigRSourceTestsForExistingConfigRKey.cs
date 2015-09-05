@@ -1,7 +1,5 @@
 ﻿using ConfigR;
 using HumbleConfig.Tests;
-using NUnit.Framework;
-using Ploeh.AutoFixture;
 
 namespace HumbleConfig.ConfigR.Tests.ConfigRSourceTests
 {
