@@ -56,10 +56,4 @@ namespace HumbleConfig.Tests
             Assert.That(_result, Is.True);
         }
     }
-
-    public interface IConfigurationSourceFactory
-    {
-        IConfigurationSource Create();
-        IConfigurationSource Create<TValue>(string key, TValue value);
-    }
 }
