@@ -8,9 +8,16 @@ namespace HumbleConfig.EnvironmentVariables
         {
             var environmentValue = Environment.GetEnvironmentVariable(key);
 
-            value = (T) Convert.ChangeType(environmentValue, typeof (T));
-
-            return value != null;
+            if (environmentValue == null)
+            {
+                value = default(T);
+                return false;
+            }
+            else
+            {
+                value = (T)Convert.ChangeType(environmentValue, typeof(T));
+                return true;
+            }
         }
     }
 }
