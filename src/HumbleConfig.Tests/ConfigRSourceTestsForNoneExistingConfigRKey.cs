@@ -23,7 +23,7 @@ namespace HumbleConfig.Tests
     {
         private IConfigurationSource _source;
         private bool _result;
-        private string _value;
+        private TValue _value;
 
         [TestFixtureSetUp]
         public void ConfigRSourceTestsWithNoneExistingConfigRKey()
@@ -42,7 +42,7 @@ namespace HumbleConfig.Tests
         [Test]
         public void ThenNullIsReturned()
         {
-            Assert.That(_value, Is.Null);
+            Assert.That(_value, Is.EqualTo(default(TValue)));
         }
 
         [Test]

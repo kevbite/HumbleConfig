@@ -10,9 +10,16 @@ namespace HumbleConfig.ConfigurationManager
         {
             var configValue = System.Configuration.ConfigurationManager.AppSettings[key];
 
-            value = (T) Convert.ChangeType(configValue, typeof (T));
-
-            return value != null;
+            if (configValue == null)
+            {
+                value = default(T);
+                return false;
+            }
+            else
+            {
+                value = (T) Convert.ChangeType(configValue, typeof (T));
+                return true;
+            }
         }
     }
 }
