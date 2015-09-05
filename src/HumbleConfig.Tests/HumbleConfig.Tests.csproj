@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationSourceTestsForExistingKey.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForKeyFormatter.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasAMatchingKey.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForMultipleSourcesAndOnlyTheLastHasAMatchingKey.cs" />

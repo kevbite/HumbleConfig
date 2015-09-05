@@ -1,39 +1,22 @@
 ﻿using ConfigR;
+using HumbleConfig.Tests;
 using NUnit.Framework;
+using Ploeh.AutoFixture;
 
 namespace HumbleConfig.ConfigR.Tests.ConfigRSourceTests
 {
-    [TestFixture]
-    public class ConfigRSourceTestsForExistingConfigRKey
+    public class ConfigRSourceTestsForExistingConfigRKey : ConfigurationSourceTestsForExistingKey<ConfigRSourceFactory>
     {
-        private ConfigRSource _source;
-        private bool _result;
-        private string _value;
 
-        [TestFixtureSetUp]
-        public void ConfigRSourceTestsWithExistingConfigRKey()
-        {
-            _source = new ConfigRSource(Config.Global);
-        }
-        
-        [SetUp]
-        public void WhenTryingToGetTheAppSettings()
-        {
-            _result = _source.TryGetAppSetting("TestKey", out _value);
-        }
-    
-        [Test]
-        public void ThenTheCorrectValueIsReturned()
-        {
-            var expected = "TestValue";
+    }
 
-            Assert.That(_value, Is.EqualTo(expected));
-        }
-
-        [Test]
-        public void ThenTheResultIsTrue()
+    public class ConfigRSourceFactory : IConfigurationSourceFactory
+    {
+        public IConfigurationSource Create(string key, string value)
         {
-            Assert.That(_result, Is.True);
+            var config = Config.Global;
+            config.Add(key, value);
+            return new ConfigRSource(config);
         }
     }
 }
