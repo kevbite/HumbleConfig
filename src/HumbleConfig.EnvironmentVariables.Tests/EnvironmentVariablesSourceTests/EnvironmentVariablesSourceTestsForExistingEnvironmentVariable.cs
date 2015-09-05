@@ -12,11 +12,16 @@ namespace HumbleConfig.EnvironmentVariables.Tests.EnvironmentVariablesSourceTest
 
     public class EnvironmentVariablesSourceFactory : IConfigurationSourceFactory
     {
+        public IConfigurationSource Create()
+        {
+            return new EnvironmentVariablesSource();
+        }
+
         public IConfigurationSource Create<TValue>(string key, TValue value)
         {
             Environment.SetEnvironmentVariable(key, value.ToString());
 
-            return new EnvironmentVariablesSource();
+            return Create();
         }
     }
 }

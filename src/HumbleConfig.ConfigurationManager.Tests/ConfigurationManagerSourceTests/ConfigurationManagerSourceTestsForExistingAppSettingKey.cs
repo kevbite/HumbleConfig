@@ -12,6 +12,11 @@ namespace HumbleConfig.ConfigurationManager.Tests.ConfigurationManagerSourceTest
 
     public class ConfigurationManagerFactory : IConfigurationSourceFactory
     {
+        public IConfigurationSource Create()
+        {
+            return new ConfigurationManagerSource();
+        }
+
         public IConfigurationSource Create<TValue>(string key, TValue value)
         {
             var config = System.Configuration.ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -21,7 +26,7 @@ namespace HumbleConfig.ConfigurationManager.Tests.ConfigurationManagerSourceTest
             config.Save();
             System.Configuration.ConfigurationManager.RefreshSection("appSettings");
 
-            return new ConfigurationManagerSource();
+            return Create();
         }
     }
 }
