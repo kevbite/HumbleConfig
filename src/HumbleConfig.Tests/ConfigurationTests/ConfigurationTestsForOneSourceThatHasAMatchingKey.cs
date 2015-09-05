@@ -4,13 +4,12 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    [TestFixture]
-    public class ConfigurationTestsForOneSourceThatHasAMatchingKey
+    public class ConfigurationTestsForOneSourceThatHasAMatchingKey<TValue> : ValueTests<TValue>
     {
         private string _key;
         private Configuration _configuration;
         private ConfigurationSourceStub _source;
-        private string _value;
+        private TValue _value;
         
 
         [TestFixtureSetUp]
@@ -21,14 +20,14 @@ namespace HumbleConfig.Tests.ConfigurationTests
             _configuration = new Configuration();
 
             _source = new ConfigurationSourceStub();
-            _source.AppSettings.Add(_key, fixture.Create<string>());
+            _source.AppSettings.Add(_key, fixture.Create<TValue>());
             _configuration.AddConfigurationSource(_source);
         }
 
         [SetUp]
         public void WhenGettingAnAppSetting()
         {
-            _value = _configuration.GetAppSetting<string>(_key);
+            _value = _configuration.GetAppSetting<TValue>(_key);
         }
 
         [Test]

@@ -2,11 +2,10 @@
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    [TestFixture]
-    public class ConfigurationTestsForNoSources
+    public class ConfigurationTestsForNoSources<TValue> : ValueTests<TValue>
     {
         private Configuration _configuration;
-        private string _value;
+        private TValue _value;
 
         [TestFixtureSetUp]
         public void GivenAConfigurationWithNoSourcesLoaded()
@@ -17,13 +16,13 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [SetUp]
         public void WhenGettingAnAppSetting()
         {
-            _value = _configuration.GetAppSetting<string>("key");
+            _value = _configuration.GetAppSetting<TValue>("key");
         }
 
         [Test]
         public void ThenTheReturnValueIsNull()
         {
-            Assert.That(_value, Is.Null);
+            Assert.That(_value, Is.EqualTo(default(TValue)));
         }
     }
 }
