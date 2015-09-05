@@ -15,7 +15,11 @@ namespace HumbleConfig.EnvironmentVariables
             }
             else
             {
-                value = (T)Convert.ChangeType(environmentValue, typeof(T));
+                var valueType = typeof (T);
+                valueType = Nullable.GetUnderlyingType(valueType) ?? valueType;
+
+                value = (T) Convert.ChangeType(environmentValue, valueType);
+
                 return true;
             }
         }

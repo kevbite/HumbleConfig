@@ -17,7 +17,10 @@ namespace HumbleConfig.ConfigurationManager
             }
             else
             {
-                value = (T) Convert.ChangeType(configValue, typeof (T));
+                var valueType = typeof(T);
+                valueType = Nullable.GetUnderlyingType(valueType) ?? valueType;
+
+                value = (T)Convert.ChangeType(configValue, valueType);
                 return true;
             }
         }
