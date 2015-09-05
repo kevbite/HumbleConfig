@@ -5,14 +5,14 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.ConfigR.Tests.ConfigRSourceTests
 {
-    public class ConfigRSourceTestsForExistingConfigRKey : ConfigurationSourceTestsForExistingKey<ConfigRSourceFactory>
+    public class ConfigRSourceTestsForExistingConfigRKey<TValue> : ConfigurationSourceTestsForExistingKey<TValue, ConfigRSourceFactory>
     {
 
     }
 
     public class ConfigRSourceFactory : IConfigurationSourceFactory
     {
-        public IConfigurationSource Create(string key, string value)
+        public IConfigurationSource Create<TValue>(string key, TValue value)
         {
             var config = Config.Global;
             config.Add(key, value);

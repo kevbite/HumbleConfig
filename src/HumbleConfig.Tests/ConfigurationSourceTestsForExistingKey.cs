@@ -8,7 +8,7 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests
 {
-   /* [TestFixture(typeof(bool))]
+    [TestFixture(typeof(bool))]
     [TestFixture(typeof(byte))]
     [TestFixture(typeof(char))]
     [TestFixture(typeof(decimal))]
@@ -17,23 +17,22 @@ namespace HumbleConfig.Tests
     [TestFixture(typeof(int))]
     [TestFixture(typeof(long))]
     [TestFixture(typeof(sbyte))]
-    [TestFixture(typeof(short))]*/
-    //[TestFixture(typeof(string))]
-    [TestFixture]
-    public abstract class ConfigurationSourceTestsForExistingKey<TConfigurationSourceFactory> where TConfigurationSourceFactory : IConfigurationSourceFactory, new ()
+    [TestFixture(typeof(short))]
+    [TestFixture(typeof(string))]
+    public abstract class ConfigurationSourceTestsForExistingKey<TValue, TConfigurationSourceFactory> where TConfigurationSourceFactory : IConfigurationSourceFactory, new ()
     {
         private IConfigurationSource _source;
         private bool _result;
-        private string _value;
+        private TValue _value;
         private readonly Fixture _fixture = new Fixture();
         private string _key;
-        private string _expectedValue;
+        private TValue _expectedValue;
 
         [TestFixtureSetUp]
         public void ConfigRSourceTestsWithExistingConfigRKey()
         {
             _key = _fixture.Create<string>();
-            _expectedValue = _fixture.Create<string>();
+            _expectedValue = _fixture.Create<TValue>();
             
             var sourceFactory = new TConfigurationSourceFactory();
             _source = sourceFactory.Create(_key, _expectedValue);
@@ -60,6 +59,6 @@ namespace HumbleConfig.Tests
 
     public interface IConfigurationSourceFactory
     {
-        IConfigurationSource Create(string key, string value);
+        IConfigurationSource Create<TValue>(string key, TValue value);
     }
 }
