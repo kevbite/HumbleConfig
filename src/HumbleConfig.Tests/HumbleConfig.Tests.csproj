@@ -56,11 +56,13 @@
     <Compile Include="ConfigRSourceTestsForNoneExistingConfigRKey.cs" />
     <Compile Include="ConfigurationSourceTestsForExistingKey.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForKeyFormatter.cs" />
+    <Compile Include="ConfigurationTests\ConfigurationTestsForNoSourcesForNoneNullableValues.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasAMatchingKey.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForMultipleSourcesAndOnlyTheLastHasAMatchingKey.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForMultipleSourcesAndAllHaveMatchingKeys.cs" />
-    <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasNoMatchingKey.cs" />
-    <Compile Include="ConfigurationTests\ConfigurationTestsForNoSources.cs" />
+    <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNoneNullables.cs" />
+    <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNullables.cs" />
+    <Compile Include="ConfigurationTests\ConfigurationTestsForNoSourcesForNullableValues.cs" />
     <Compile Include="IConfigurationSourceFactory.cs" />
     <Compile Include="InMemory\InMemorySourceTests\InMemorySourceFactory.cs" />
     <Compile Include="InMemory\InMemorySourceTests\InMemorySourceTestsSourceTestsForExistingAppSettingKey.cs" />

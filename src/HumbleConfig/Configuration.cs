@@ -21,7 +21,14 @@ namespace HumbleConfig
                 }
             }
 
-            return default(TValue);
+            var valueType = typeof (TValue);
+
+            if(valueType.IsClass || valueType.IsGenericType && valueType.GetGenericTypeDefinition() == typeof (Nullable<>))
+            {
+                return default(TValue);
+            }
+
+            throw new ArgumentException($"No value could be found for the given key of {key}", nameof(key));
         }
 
 

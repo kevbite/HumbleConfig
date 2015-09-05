@@ -4,7 +4,7 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    public class ConfigurationTestsForOneSourceThatHasAMatchingKey<TValue> : ValueTests<TValue>
+    public class ConfigurationTestsForOneSourceThatHasAMatchingKey<TValue> : AllValueTests<TValue>
     {
         private string _key;
         private Configuration _configuration;

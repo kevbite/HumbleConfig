@@ -8,7 +8,7 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests
 {
-    public abstract class ConfigurationSourceTestsForNoneExistingKey<TValue, TConfigurationSourceFactory> : ValueTests<TValue> where TConfigurationSourceFactory : IConfigurationSourceFactory, new()
+    public abstract class ConfigurationSourceTestsForNoneExistingKey<TValue, TConfigurationSourceFactory> : AllValueTests<TValue> where TConfigurationSourceFactory : IConfigurationSourceFactory, new()
     {
         private IConfigurationSource _source;
         private bool _result;

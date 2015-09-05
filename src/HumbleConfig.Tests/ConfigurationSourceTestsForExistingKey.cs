@@ -8,7 +8,7 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests
 {
-    public abstract class ConfigurationSourceTestsForExistingKey<TValue, TConfigurationSourceFactory> : ValueTests<TValue> where TConfigurationSourceFactory : IConfigurationSourceFactory, new ()
+    public abstract class ConfigurationSourceTestsForExistingKey<TValue, TConfigurationSourceFactory> : AllValueTests<TValue> where TConfigurationSourceFactory : IConfigurationSourceFactory, new ()
     {
         private IConfigurationSource _source;
         private bool _result;
@@ -56,8 +56,38 @@ namespace HumbleConfig.Tests
     [TestFixture(typeof (long))]
     [TestFixture(typeof (sbyte))]
     [TestFixture(typeof (short))]
+    public abstract class AllValueTests<TValue>
+    {
+        
+    }
+
+    [TestFixture(typeof(bool))]
+    [TestFixture(typeof(byte))]
+    [TestFixture(typeof(char))]
+    [TestFixture(typeof(decimal))]
+    [TestFixture(typeof(double))]
+    [TestFixture(typeof(float))]
+    [TestFixture(typeof(int))]
+    [TestFixture(typeof(long))]
+    [TestFixture(typeof(sbyte))]
+    [TestFixture(typeof(short))]
+    public abstract class NoneNullableTests<TValue>
+    {
+        
+    }
+
+    [TestFixture(typeof (bool?))]
+    [TestFixture(typeof (byte?))]
+    [TestFixture(typeof (char?))]
+    [TestFixture(typeof (decimal?))]
+    [TestFixture(typeof (double?))]
+    [TestFixture(typeof (float?))]
+    [TestFixture(typeof (int?))]
+    [TestFixture(typeof (long?))]
+    [TestFixture(typeof (sbyte?))]
+    [TestFixture(typeof (short?))]
     [TestFixture(typeof (string))]
-    public abstract class ValueTests<TValue>
+    public abstract class NullableValueTests<TValue>
     {
         
     }

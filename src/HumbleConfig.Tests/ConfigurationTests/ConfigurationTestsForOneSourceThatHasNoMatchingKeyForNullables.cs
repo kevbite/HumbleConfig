@@ -1,9 +1,10 @@
-﻿using HumbleConfig.Tests.Stubs;
+﻿using System.Runtime.InteropServices;
+using HumbleConfig.Tests.Stubs;
 using NUnit.Framework;
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    public class ConfigurationTestsForOneSourceThatHasNoMatchingKey<TValue> : ValueTests<TValue>
+    public class ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNullables<TValue> : NullableValueTests<TValue>
     {
         private Configuration _configuration;
         private TValue _value;
@@ -26,7 +27,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [Test]
         public void ThenTheReturnValueIsNull()
         {
-            Assert.That(_value, Is.EqualTo(default(TValue)));
+            Assert.That(_value, Is.Null);
         }
     }
 }

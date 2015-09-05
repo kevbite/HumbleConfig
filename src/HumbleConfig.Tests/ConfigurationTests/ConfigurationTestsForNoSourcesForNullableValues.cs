@@ -2,7 +2,7 @@
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    public class ConfigurationTestsForNoSources<TValue> : ValueTests<TValue>
+    public class ConfigurationTestsForNoSourcesForNullableValues<TValue> : NullableValueTests<TValue>
     {
         private Configuration _configuration;
         private TValue _value;
@@ -22,7 +22,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [Test]
         public void ThenTheReturnValueIsNull()
         {
-            Assert.That(_value, Is.EqualTo(default(TValue)));
+            Assert.That(_value, Is.Null);
         }
     }
 }
