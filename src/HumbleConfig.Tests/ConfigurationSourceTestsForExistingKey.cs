@@ -8,7 +8,7 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests
 {
-    public abstract class ConfigurationSourceTestsForExistingKey<TValue, TConfigurationSourceFactory> : AllValueTests<TValue> where TConfigurationSourceFactory : IConfigurationSourceFactory, new ()
+    public abstract class ConfigurationSourceTestsForExistingKey<TValue> : AllValueTests<TValue>
     {
         private IConfigurationSource _source;
         private ConfigurationSourceResult<TValue> _result;
@@ -17,14 +17,15 @@ namespace HumbleConfig.Tests
         private TValue _expectedValue;
 
         [TestFixtureSetUp]
-        public void ConfigRSourceTestsWithExistingConfigRKey()
+        public void GivenConfigurationSourceWithExistingRKey()
         {
             _key = _fixture.Create<string>();
             _expectedValue = _fixture.Create<TValue>();
-            
-            var sourceFactory = new TConfigurationSourceFactory();
-            _source = sourceFactory.Create(_key, _expectedValue);
+
+            _source = GivenConfigurationSourceWithExistingRKey(_key, _expectedValue);
         }
+
+        protected abstract IConfigurationSource GivenConfigurationSourceWithExistingRKey(string key, TValue expectedValue);
 
         [SetUp]
         public void WhenTryingToGetTheAppSettings()

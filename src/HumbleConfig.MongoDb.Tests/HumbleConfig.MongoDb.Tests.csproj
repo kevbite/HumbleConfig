@@ -52,7 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MongoDbSourceTests\MongoDbSourceFactory.cs" />
     <Compile Include="MongoDbSourceTests\ConfigRSourceTestsForExistingConfigRKey.cs" />
     <Compile Include="MongoDbSourceTests\MongoDbSourceTestsForNoneExistingKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

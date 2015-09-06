@@ -81,7 +81,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigRSourceTests\ConfigRSourceFactory.cs" />
     <Compile Include="ConfigRSourceTests\ConfigRSourceTestsForExistingConfigRKey.cs" />
     <Compile Include="ConfigRSourceTests\ConfigRSourceTestsForNoneExistingConfigRKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

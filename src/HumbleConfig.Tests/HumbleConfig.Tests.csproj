@@ -64,8 +64,6 @@
     <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNoneNullables.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNullables.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForNoSourcesForNullableValues.cs" />
-    <Compile Include="IConfigurationSourceFactory.cs" />
-    <Compile Include="InMemory\InMemorySourceTests\InMemorySourceFactory.cs" />
     <Compile Include="InMemory\InMemorySourceTests\InMemorySourceTestsSourceTestsForExistingAppSettingKey.cs" />
     <Compile Include="InMemory\InMemorySourceTests\InMemorySourceTestsForNoneExistingAppSettingKey.cs" />
     <Compile Include="KeyFormatters\DefaultKeyFormatterTests.cs" />
