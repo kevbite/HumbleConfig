@@ -108,7 +108,7 @@ namespace HumbleConfig.FunctionalTests
         }
 
         [TestFixtureTearDown]
-        public void Kill()
+        public void DestroyEvidence()
         {
             _mongoCollection.DeleteOneAsync(new BsonDocument("_id", key7)).Wait();
         }

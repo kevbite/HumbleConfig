@@ -44,5 +44,16 @@ namespace HumbleConfig.Tests
         {
             Assert.That(_result.KeyExists, Is.True);
         }
+
+        [TestFixtureTearDown]
+        public void DestroyEvidence()
+        {
+            DestroyEvidence(_key);
+        }
+
+        protected virtual void DestroyEvidence(string key)
+        {
+            
+        }
     }
 }
