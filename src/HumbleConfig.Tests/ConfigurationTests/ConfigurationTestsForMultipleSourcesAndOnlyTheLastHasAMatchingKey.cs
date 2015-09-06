@@ -32,7 +32,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [SetUp]
         public void WhenGettingAnAppSetting()
         {
-            _value = _configuration.GetAppSetting<TValue>(_key);
+            _value = _configuration.GetAppSetting<TValue>(_key).Result;
         }
 
         [Test]

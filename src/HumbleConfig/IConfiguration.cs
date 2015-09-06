@@ -1,7 +1,9 @@
-﻿namespace HumbleConfig
+﻿using System.Threading.Tasks;
+
+namespace HumbleConfig
 {
     public interface IConfiguration
     {
-        TValue GetAppSetting<TValue>(string key);
+        Task<TValue> GetAppSetting<TValue>(string key);
     }
 }
