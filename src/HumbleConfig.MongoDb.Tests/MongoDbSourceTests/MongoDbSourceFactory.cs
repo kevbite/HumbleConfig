@@ -8,16 +8,16 @@ namespace HumbleConfig.MongoDb.Tests.MongoDbSourceTests
     {
         public IConfigurationSource Create()
         {
-            var collection = new MongoClient().GetDatabase("test").GetCollection<MongoDbSource.AppSetting>("appSettings");
+            var collection = new MongoClient().GetDatabase("test").GetCollection<AppSetting>("appSettings");
 
             return new MongoDbSource(collection);
         }
 
         public IConfigurationSource Create<TValue>(string key, TValue value)
         {
-            var collection = new MongoClient().GetDatabase("test").GetCollection<MongoDbSource.AppSetting>("appSettings");
+            var collection = new MongoClient().GetDatabase("test").GetCollection<AppSetting>("appSettings");
             
-            collection.InsertOneAsync(new MongoDbSource.AppSetting()
+            collection.InsertOneAsync(new AppSetting()
             {
                  Id = key,
                  Value = value

@@ -30,13 +30,5 @@ namespace HumbleConfig.MongoDb
                 ConfigurationSourceResult<TValue>.SuccessResult(
                     (TValue) document.Value);
         }
-
-        
-        public class AppSetting
-        {
-            public string Id { get; set; }
-
-            public dynamic Value { get; set; }
-        }
     }
 }

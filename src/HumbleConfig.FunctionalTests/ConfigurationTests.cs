@@ -4,6 +4,8 @@ using HumbleConfig.ConfigR;
 using HumbleConfig.ConfigurationManager;
 using HumbleConfig.EnvironmentVariables;
 using HumbleConfig.InMemory;
+using HumbleConfig.MongoDb;
+using MongoDB.Driver;
 using NUnit.Framework;
 
 namespace HumbleConfig.FunctionalTests
@@ -19,6 +21,7 @@ namespace HumbleConfig.FunctionalTests
         private string key4 = "key4";
         private string key5 = "key5";
         private string key6 = "key6";
+        private string key7 = "key7";
 
         private string _key1Actual;
         private string _key2Actual;
@@ -26,6 +29,7 @@ namespace HumbleConfig.FunctionalTests
         private string _key4Actual;
         private string _key5Actual;
         private string _key6Actual;
+        private string _key7Actual;
 
         [TestFixtureSetUp]
         public void GivenConfigurationWithEnvironmentVaribleAndConfigurationManager()
@@ -33,11 +37,17 @@ namespace HumbleConfig.FunctionalTests
             Environment.SetEnvironmentVariable(key1, "EnvironmentVariable");
             Environment.SetEnvironmentVariable(key2, "EnvironmentVariable");
 
+            new MongoClient().GetDatabase("settings")
+                .GetCollection<AppSetting>("appSettings")
+                .InsertOneAsync(new AppSetting() {Id = key7, Value = "MongoDB"})
+                .Wait();
+
             _configuration = new Configuration()
                 .AddEnvironmentVariables()
                 .AddConfigurationManager()
                 .AddInMemory(new Dictionary<string, object>() { {key5, "InMemory"} })
-                .AddConfigR();
+                .AddConfigR()
+                .AddMongoDb("mongodb://localhost/settings", "appSettings");
         }
 
         [SetUp]
@@ -49,6 +59,7 @@ namespace HumbleConfig.FunctionalTests
             _key4Actual = _configuration.GetAppSetting<string>(key4).Result;
             _key5Actual = _configuration.GetAppSetting<string>(key5).Result;
             _key6Actual = _configuration.GetAppSetting<string>(key6).Result;
+            _key7Actual = _configuration.GetAppSetting<string>(key7).Result;
         }
 
         [Test]
@@ -85,6 +96,12 @@ namespace HumbleConfig.FunctionalTests
         public void ThenKey6PullsFromConfigR()
         {
             Assert.That(_key6Actual, Is.EqualTo("ConfigR"));
+        }
+
+        [Test]
+        public void ThenKey7PullsFromMongoDb()
+        {
+            Assert.That(_key7Actual, Is.EqualTo("MongoDB"));
         }
     }
 }
