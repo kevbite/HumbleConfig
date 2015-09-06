@@ -1,15 +1,28 @@
 ﻿
+using System;
 using System.Linq;
 
 namespace HumbleConfig.ConfigurationManager
 {
     public class ConfigurationManagerSource : IConfigurationSource
     {
-        public bool TryGetAppSetting(string key, out string value)
+        public bool TryGetAppSetting<T>(string key, out T value)
         {
-            value = System.Configuration.ConfigurationManager.AppSettings[key];
+            var configValue = System.Configuration.ConfigurationManager.AppSettings[key];
 
-            return value != null;
+            if (configValue == null)
+            {
+                value = default(T);
+                return false;
+            }
+            else
+            {
+                var valueType = typeof(T);
+                valueType = Nullable.GetUnderlyingType(valueType) ?? valueType;
+
+                value = (T)Convert.ChangeType(configValue, valueType);
+                return true;
+            }
         }
     }
 }

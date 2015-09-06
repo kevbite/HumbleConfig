@@ -4,18 +4,17 @@ namespace HumbleConfig.Tests.Stubs
 {
     public class ConfigurationSourceStub : IConfigurationSource
     {
-        public IDictionary<string, string> AppSettings { get; } = new Dictionary<string, string>();
-
-        public IDictionary<string, string> ConnectionStrings { get; } = new Dictionary<string, string>();
+        public IDictionary<string, object> AppSettings { get; } = new Dictionary<string, object>();
         
-        public bool TryGetAppSetting(string key, out string value)
+        
+        public bool TryGetAppSetting<T>(string key, out T value)
         {
-            return AppSettings.TryGetValue(key, out value);
-        }
+            object temp;
+            var result = AppSettings.TryGetValue(key, out temp);
 
-        public bool TryGetConnectionString(string key, out string value)
-        {
-            return ConnectionStrings.TryGetValue(key, out value);
+            value = result ? (T) temp : default(T);
+
+            return result;
         }
     }
 }

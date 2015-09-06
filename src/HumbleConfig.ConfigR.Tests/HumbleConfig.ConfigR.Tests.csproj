@@ -46,6 +46,10 @@
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=3.31.3.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.31.3\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Roslyn.Compilers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Roslyn.Compilers.Common.1.2.20906.2\lib\net45\Roslyn.Compilers.dll</HintPath>
       <Private>True</Private>
@@ -77,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigRSourceTests\ConfigRSourceFactory.cs" />
     <Compile Include="ConfigRSourceTests\ConfigRSourceTestsForExistingConfigRKey.cs" />
     <Compile Include="ConfigRSourceTests\ConfigRSourceTestsForNoneExistingConfigRKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,11 +91,16 @@
       <Project>{D0E7A0E1-B3B7-4B09-8AE7-C971A87638E4}</Project>
       <Name>HumbleConfig.ConfigR</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HumbleConfig.Tests\HumbleConfig.Tests.csproj">
+      <Project>{27C04368-FC7A-4D87-8F60-A14FE965FB71}</Project>
+      <Name>HumbleConfig.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HumbleConfig\HumbleConfig.csproj">
+      <Project>{b04cb40d-08d8-44c6-b66e-f1ed0e97e507}</Project>
+      <Name>HumbleConfig</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HumbleConfig.ConfigR.Tests.dll.csx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

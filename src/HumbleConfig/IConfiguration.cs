@@ -2,6 +2,6 @@
 {
     public interface IConfiguration
     {
-        string GetAppSetting(string key);
+        TValue GetAppSetting<TValue>(string key);
     }
 }

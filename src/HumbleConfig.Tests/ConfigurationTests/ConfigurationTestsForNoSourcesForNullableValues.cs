@@ -2,11 +2,10 @@
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    [TestFixture]
-    public class ConfigurationTestsForNoSources
+    public class ConfigurationTestsForNoSourcesForNullableValues<TValue> : NullableValueTests<TValue>
     {
         private Configuration _configuration;
-        private string _value;
+        private TValue _value;
 
         [TestFixtureSetUp]
         public void GivenAConfigurationWithNoSourcesLoaded()
@@ -17,7 +16,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [SetUp]
         public void WhenGettingAnAppSetting()
         {
-            _value = _configuration.GetAppSetting("key");
+            _value = _configuration.GetAppSetting<TValue>("key");
         }
 
         [Test]

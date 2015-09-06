@@ -17,13 +17,13 @@ namespace HumbleConfig.FunctionalTests
         {
             _configuration = new Configuration()
                 .WithKeyPrefixer("HumbleConfig:")
-                .AddInMemory(new Dictionary<string, string>() { { "HumbleConfig:Key1", "InMemory"} });
+                .AddInMemory(new Dictionary<string, object>() { { "HumbleConfig:Key1", "InMemory"} });
         }
 
         [SetUp]
         public void WhenGettingAppSettings()
         {
-            _key1Actual = _configuration.GetAppSetting("Key1");
+            _key1Actual = _configuration.GetAppSetting<string>("Key1");
         }
 
         [Test]

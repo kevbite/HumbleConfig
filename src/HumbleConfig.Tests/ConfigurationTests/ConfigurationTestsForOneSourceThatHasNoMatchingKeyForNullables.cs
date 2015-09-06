@@ -1,13 +1,13 @@
-﻿using HumbleConfig.Tests.Stubs;
+﻿using System.Runtime.InteropServices;
+using HumbleConfig.Tests.Stubs;
 using NUnit.Framework;
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    [TestFixture]
-    public class ConfigurationTestsForOneSourceThatHasNoMatchingKey
+    public class ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNullables<TValue> : NullableValueTests<TValue>
     {
         private Configuration _configuration;
-        private string _value;
+        private TValue _value;
 
         [TestFixtureSetUp]
         public void GivenAConfigurationWithOneSourceThatHasNoMatchingKey()
@@ -21,7 +21,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [SetUp]
         public void WhenGettingAnAppSetting()
         {
-            _value = _configuration.GetAppSetting("key");
+            _value = _configuration.GetAppSetting<TValue>("key");
         }
 
         [Test]

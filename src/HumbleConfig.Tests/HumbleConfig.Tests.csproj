@@ -53,16 +53,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllValueTests.cs" />
+    <Compile Include="ConfigRSourceTestsForNoneExistingConfigRKey.cs" />
+    <Compile Include="ConfigurationSourceTestsForExistingKey.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForKeyFormatter.cs" />
+    <Compile Include="ConfigurationTests\ConfigurationTestsForNoSourcesForNoneNullableValues.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasAMatchingKey.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForMultipleSourcesAndOnlyTheLastHasAMatchingKey.cs" />
     <Compile Include="ConfigurationTests\ConfigurationTestsForMultipleSourcesAndAllHaveMatchingKeys.cs" />
-    <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasNoMatchingKey.cs" />
-    <Compile Include="ConfigurationTests\ConfigurationTestsForNoSources.cs" />
+    <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNoneNullables.cs" />
+    <Compile Include="ConfigurationTests\ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNullables.cs" />
+    <Compile Include="ConfigurationTests\ConfigurationTestsForNoSourcesForNullableValues.cs" />
+    <Compile Include="IConfigurationSourceFactory.cs" />
+    <Compile Include="InMemory\InMemorySourceTests\InMemorySourceFactory.cs" />
     <Compile Include="InMemory\InMemorySourceTests\InMemorySourceTestsSourceTestsForExistingAppSettingKey.cs" />
     <Compile Include="InMemory\InMemorySourceTests\InMemorySourceTestsForNoneExistingAppSettingKey.cs" />
     <Compile Include="KeyFormatters\DefaultKeyFormatterTests.cs" />
     <Compile Include="KeyFormatters\KeyPrefixerTests.cs" />
+    <Compile Include="NoneNullableTests.cs" />
+    <Compile Include="NullableValueTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stubs\ConfigurationSourceStub.cs" />
   </ItemGroup>
