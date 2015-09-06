@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HumbleConfig.InMemory
 {
@@ -12,14 +14,15 @@ namespace HumbleConfig.InMemory
             _appSettings = appSettings;
         }
 
-        public bool TryGetAppSetting<T>(string key, out T value)
+        public Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
             object temp;
             var result = _appSettings.TryGetValue(key, out temp);
 
-            value = result ? (T) temp : default(T);
+            var sourceResult =  result ? ConfigurationSourceResult<TValue>.SuccessResult((TValue) temp)
+                                        : ConfigurationSourceResult<TValue>.FailedResult();
 
-            return result;
+            return Task.FromResult(sourceResult);
         }
     }
 }

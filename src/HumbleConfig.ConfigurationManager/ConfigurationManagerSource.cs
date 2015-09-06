@@ -1,27 +1,28 @@
 ﻿
 using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HumbleConfig.ConfigurationManager
 {
     public class ConfigurationManagerSource : IConfigurationSource
     {
-        public bool TryGetAppSetting<T>(string key, out T value)
+        public Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
             var configValue = System.Configuration.ConfigurationManager.AppSettings[key];
 
             if (configValue == null)
             {
-                value = default(T);
-                return false;
+                return Task.FromResult(ConfigurationSourceResult<TValue>.FailedResult());
             }
             else
             {
-                var valueType = typeof(T);
+                var valueType = typeof(TValue);
                 valueType = Nullable.GetUnderlyingType(valueType) ?? valueType;
 
-                value = (T)Convert.ChangeType(configValue, valueType);
-                return true;
+                var value = (TValue)Convert.ChangeType(configValue, valueType);
+                return Task.FromResult(ConfigurationSourceResult<TValue>.SuccessResult(value));
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using System.Threading;
+using Moq;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 
@@ -23,7 +24,8 @@ namespace HumbleConfig.Tests.ConfigurationTests
                 .Returns(_formattedKey);
 
             _source = new Mock<IConfigurationSource>();
-            _source.Setup(x => x.TryGetAppSetting(_formattedKey, out value)).Returns(true);
+            _source.Setup(x => x.GetAppSettingAsync<TValue>(_formattedKey, default(CancellationToken)))
+                            .ReturnsAsync(ConfigurationSourceResult<TValue>.SuccessResult(value));
             
             _configuration = new Configuration();
             _configuration.AddConfigurationSource(_source.Object);
@@ -33,14 +35,13 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [SetUp]
         public void WhenGettingAnAppSetting()
         {
-            _configuration.GetAppSetting<TValue>(_key);
+            _configuration.GetAppSettingAsync<TValue>(_key).Wait();
         }
 
         [Test]
         public void ThenTheSourceIsCalledWithTheFormattedKey()
         {
-            TValue temp;
-            _source.Verify(x => x.TryGetAppSetting(_formattedKey, out temp), Times.Once);
+            _source.Verify(x => x.GetAppSettingAsync<TValue>(_formattedKey, default(CancellationToken)), Times.Once);
         }
     }
 }

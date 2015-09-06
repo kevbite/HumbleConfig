@@ -21,7 +21,9 @@ PM> Install-Package HumbleConfig.EnvironmentVariables
 ```powershell
 PM> Install-Package HumbleConfig.ConfigR
 ```
-
+```powershell
+PM> Install-Package HumbleConfig.MongoDb
+```
 ### How to use it?
 First, create an `Configuration` instance:
 ```csharp
@@ -31,17 +33,18 @@ Then, configure the sources for configuration:
 ```csharp
 configuration.AddEnvironmentVariables()
              .AddConfigurationManager()
-			 .AddConfigR();
+			 .AddConfigR()
+			 .AddMongoDb("mongodb://localhost/settings", "appSettings");
 ```
 We can also add some default values by using a InMemory source:
 ```csharp
-var defaults = new Dictionary<string, string>() { {"UserName", "Kevin.Smith"} };
+var defaults = new Dictionary<string, object>() { {"UserName", "Kevin.Smith"} };
 
 configuration.AddInMemory(defaults);
 ```
 Once we're happy with our configuration we can pull out an app setting:
 ```csharp
-var value = configuration.GetAppSetting<string>("key");
+var value = await configuration.GetAppSettingAysnc<string>("key");
 ```
 ### Key formatters
 Ever been in config hell where you don't know what key is used where.

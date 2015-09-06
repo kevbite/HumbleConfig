@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using HumbleConfig.KeyFormatters;
 
 namespace HumbleConfig
@@ -9,15 +11,15 @@ namespace HumbleConfig
         private readonly List<IConfigurationSource> _configurationSources = new List<IConfigurationSource>();
         private IKeyFormatter _keyFormatter = new DefaultKeyFormatter();
 
-        public TValue GetAppSetting<TValue>(string key)
+        public async Task<TValue> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
             var formattedKey = _keyFormatter.FormatKey(key);
             foreach (var configurationSource in _configurationSources)
             {
-                TValue value;
-                if (configurationSource.TryGetAppSetting(formattedKey, out value))
+                var result = await configurationSource.GetAppSettingAsync<TValue>(formattedKey, cancellationToken).ConfigureAwait(false);
+                if (result.KeyExists)
                 {
-                    return value;
+                    return result.Value;
                 }
             }
 

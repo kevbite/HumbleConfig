@@ -1,4 +1,6 @@
-﻿using ConfigR;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using ConfigR;
 
 namespace HumbleConfig.ConfigR
 {
@@ -11,14 +13,15 @@ namespace HumbleConfig.ConfigR
             _config = config;
         }
 
-        public bool TryGetAppSetting<T>(string key, out T value)
+        public Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
             object temp;
             var result = _config.TryGetValue(key, out temp);
 
-            value = result ? (T)temp : default(T);
+            var sourceResult = result ? ConfigurationSourceResult<TValue>.SuccessResult((TValue)temp)
+                            : ConfigurationSourceResult<TValue>.FailedResult();
 
-            return result;
+            return Task.FromResult(sourceResult);
         }
     }
 }

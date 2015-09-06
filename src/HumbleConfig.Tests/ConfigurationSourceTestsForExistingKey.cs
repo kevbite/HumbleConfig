@@ -8,41 +8,52 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests
 {
-    public abstract class ConfigurationSourceTestsForExistingKey<TValue, TConfigurationSourceFactory> : AllValueTests<TValue> where TConfigurationSourceFactory : IConfigurationSourceFactory, new ()
+    public abstract class ConfigurationSourceTestsForExistingKey<TValue> : AllValueTests<TValue>
     {
         private IConfigurationSource _source;
-        private bool _result;
-        private TValue _value;
+        private ConfigurationSourceResult<TValue> _result;
         private readonly Fixture _fixture = new Fixture();
         private string _key;
         private TValue _expectedValue;
 
         [TestFixtureSetUp]
-        public void ConfigRSourceTestsWithExistingConfigRKey()
+        public void GivenConfigurationSourceWithExistingRKey()
         {
             _key = _fixture.Create<string>();
             _expectedValue = _fixture.Create<TValue>();
-            
-            var sourceFactory = new TConfigurationSourceFactory();
-            _source = sourceFactory.Create(_key, _expectedValue);
+
+            _source = GivenConfigurationSourceWithExistingRKey(_key, _expectedValue);
         }
+
+        protected abstract IConfigurationSource GivenConfigurationSourceWithExistingRKey(string key, TValue expectedValue);
 
         [SetUp]
         public void WhenTryingToGetTheAppSettings()
         {
-            _result = _source.TryGetAppSetting(_key, out _value);
+            _result = _source.GetAppSettingAsync<TValue>(_key).Result;
         }
 
         [Test]
         public void ThenTheCorrectValueIsReturned()
         {
-            Assert.That(_value, Is.EqualTo(_expectedValue));
+            Assert.That(_result.Value, Is.EqualTo(_expectedValue));
         }
 
         [Test]
-        public void ThenTheResultIsTrue()
+        public void ThenTheResultKeyExistsIsTrue()
         {
-            Assert.That(_result, Is.True);
+            Assert.That(_result.KeyExists, Is.True);
+        }
+
+        [TestFixtureTearDown]
+        public void DestroyEvidence()
+        {
+            DestroyEvidence(_key);
+        }
+
+        protected virtual void DestroyEvidence(string key)
+        {
+            
         }
     }
 }

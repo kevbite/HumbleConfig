@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationManagerSourceTests\ConfigurationManagerFactory.cs" />
     <Compile Include="ConfigurationManagerSourceTests\ConfigurationManagerSourceTestsForNoneExistingAppSettingKey.cs" />
     <Compile Include="ConfigurationManagerSourceTests\ConfigurationManagerSourceTestsForExistingAppSettingKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

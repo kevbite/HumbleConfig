@@ -20,11 +20,20 @@ namespace HumbleConfig.Tests.ConfigurationTests
         {
             try
             {
-                _value = _configuration.GetAppSetting<TValue>("key");
+                _value = _configuration.GetAppSettingAsync<TValue>("key").Result;
             }
             catch (ArgumentException ex)
             {
                 _exception = ex;
+            }
+            catch (AggregateException ex)
+            {
+                var argumentException = ex.InnerException as ArgumentException;
+                if (argumentException != null)
+                {
+                    _exception = argumentException;
+
+                }
             }
         }
 

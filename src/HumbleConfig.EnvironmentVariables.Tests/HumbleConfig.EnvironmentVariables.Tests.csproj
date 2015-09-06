@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnvironmentVariablesSourceTests\EnvironmentVariablesSourceFactory.cs" />
     <Compile Include="EnvironmentVariablesSourceTests\EnvironmentVariablesSourceTestsForNoneExistingEnvironmentVariable.cs" />
     <Compile Include="EnvironmentVariablesSourceTests\EnvironmentVariablesSourceTestsForExistingEnvironmentVariable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.0.1\lib\net45\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.0.1.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.0.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -76,6 +88,10 @@
     <ProjectReference Include="..\HumbleConfig.EnvironmentVariables\HumbleConfig.EnvironmentVariables.csproj">
       <Project>{8C21C807-5FBB-46A6-AFE3-15028D257BAB}</Project>
       <Name>HumbleConfig.EnvironmentVariables</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HumbleConfig.MongoDb\HumbleConfig.MongoDb.csproj">
+      <Project>{C0FFC254-2495-483A-AA70-1E592148D03E}</Project>
+      <Name>HumbleConfig.MongoDb</Name>
     </ProjectReference>
     <ProjectReference Include="..\HumbleConfig\HumbleConfig.csproj">
       <Project>{B04CB40D-08D8-44C6-B66E-F1ED0E97E507}</Project>
