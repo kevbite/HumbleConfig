@@ -1,7 +1,9 @@
-﻿namespace HumbleConfig
+﻿using System.Threading.Tasks;
+
+namespace HumbleConfig
 {
     public interface IConfigurationSource
     {
-        bool TryGetAppSetting<T>(string key, out T value);
+        Task<bool> TryGetAppSetting<T>(string key, out T value);
     }
 }

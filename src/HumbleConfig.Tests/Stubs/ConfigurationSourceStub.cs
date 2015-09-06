@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HumbleConfig.Tests.Stubs
 {
@@ -7,14 +8,14 @@ namespace HumbleConfig.Tests.Stubs
         public IDictionary<string, object> AppSettings { get; } = new Dictionary<string, object>();
         
         
-        public bool TryGetAppSetting<T>(string key, out T value)
+        public Task<bool> TryGetAppSetting<T>(string key, out T value)
         {
             object temp;
             var result = AppSettings.TryGetValue(key, out temp);
 
             value = result ? (T) temp : default(T);
 
-            return result;
+            return Task.FromResult(result);
         }
     }
 }

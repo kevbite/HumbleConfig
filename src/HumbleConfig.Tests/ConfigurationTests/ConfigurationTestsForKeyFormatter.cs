@@ -23,7 +23,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
                 .Returns(_formattedKey);
 
             _source = new Mock<IConfigurationSource>();
-            _source.Setup(x => x.TryGetAppSetting(_formattedKey, out value)).Returns(true);
+            _source.Setup(x => x.TryGetAppSetting(_formattedKey, out value)).ReturnsAsync(true);
             
             _configuration = new Configuration();
             _configuration.AddConfigurationSource(_source.Object);

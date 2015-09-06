@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HumbleConfig.InMemory
 {
@@ -12,14 +13,14 @@ namespace HumbleConfig.InMemory
             _appSettings = appSettings;
         }
 
-        public bool TryGetAppSetting<T>(string key, out T value)
+        public Task<bool> TryGetAppSetting<T>(string key, out T value)
         {
             object temp;
             var result = _appSettings.TryGetValue(key, out temp);
 
             value = result ? (T) temp : default(T);
 
-            return result;
+            return Task.FromResult(result);
         }
     }
 }

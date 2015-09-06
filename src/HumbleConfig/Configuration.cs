@@ -15,7 +15,7 @@ namespace HumbleConfig
             foreach (var configurationSource in _configurationSources)
             {
                 TValue value;
-                if (configurationSource.TryGetAppSetting(formattedKey, out value))
+                if (configurationSource.TryGetAppSetting(formattedKey, out value).Result)
                 {
                     return value;
                 }

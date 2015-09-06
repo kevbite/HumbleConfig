@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace HumbleConfig.EnvironmentVariables
 {
     public class EnvironmentVariablesSource : IConfigurationSource
     {
-        public bool TryGetAppSetting<T>(string key, out T value)
+        public Task<bool> TryGetAppSetting<T>(string key, out T value)
         {
             var environmentValue = Environment.GetEnvironmentVariable(key);
 
             if (environmentValue == null)
             {
                 value = default(T);
-                return false;
+                return Task.FromResult(false);
             }
             else
             {
@@ -20,7 +21,7 @@ namespace HumbleConfig.EnvironmentVariables
 
                 value = (T) Convert.ChangeType(environmentValue, valueType);
 
-                return true;
+                return Task.FromResult(true);
             }
         }
     }

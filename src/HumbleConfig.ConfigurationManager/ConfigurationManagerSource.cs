@@ -1,19 +1,20 @@
 ﻿
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace HumbleConfig.ConfigurationManager
 {
     public class ConfigurationManagerSource : IConfigurationSource
     {
-        public bool TryGetAppSetting<T>(string key, out T value)
+        public Task<bool> TryGetAppSetting<T>(string key, out T value)
         {
             var configValue = System.Configuration.ConfigurationManager.AppSettings[key];
 
             if (configValue == null)
             {
                 value = default(T);
-                return false;
+                return Task.FromResult(false);
             }
             else
             {
@@ -21,7 +22,7 @@ namespace HumbleConfig.ConfigurationManager
                 valueType = Nullable.GetUnderlyingType(valueType) ?? valueType;
 
                 value = (T)Convert.ChangeType(configValue, valueType);
-                return true;
+                return Task.FromResult(true);
             }
         }
     }

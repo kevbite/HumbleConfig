@@ -1,4 +1,5 @@
-﻿using ConfigR;
+﻿using System.Threading.Tasks;
+using ConfigR;
 
 namespace HumbleConfig.ConfigR
 {
@@ -11,14 +12,14 @@ namespace HumbleConfig.ConfigR
             _config = config;
         }
 
-        public bool TryGetAppSetting<T>(string key, out T value)
+        public Task<bool>TryGetAppSetting<T>(string key, out T value)
         {
             object temp;
             var result = _config.TryGetValue(key, out temp);
 
             value = result ? (T)temp : default(T);
 
-            return result;
+            return Task.FromResult(result);
         }
     }
 }
