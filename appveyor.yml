@@ -26,6 +26,9 @@
   cache:
     - src\packages -> **\packages.config
   
+  services:
+    - mongodb
+  
   test:
     assemblies:
       - '**\*.Tests.dll'
@@ -70,6 +73,9 @@
   configuration: Release
   cache:
     - src\packages -> **\packages.config
+  
+  services:
+    - mongodb
   
   test:
     assemblies:

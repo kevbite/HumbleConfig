@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{19879791-BB47-4E82-8276-402990317E1E}</ProjectGuid>
+    <ProjectGuid>{C0FFC254-2495-483A-AA70-1E592148D03E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HumbleConfig.FunctionalTests</RootNamespace>
-    <AssemblyName>HumbleConfig.FunctionalTests</AssemblyName>
+    <RootNamespace>HumbleConfig.MongoDb</RootNamespace>
+    <AssemblyName>HumbleConfig.MongoDb</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,20 +42,7 @@
       <HintPath>..\packages\MongoDB.Driver.Core.2.0.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Ploeh.AutoFixture, Version=3.31.3.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoFixture.3.31.3\lib\net40\Ploeh.AutoFixture.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -65,38 +52,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationTestsWithKeyPrefixer.cs" />
-    <Compile Include="ConfigurationTests.cs" />
+    <Compile Include="AppSetting.cs" />
+    <Compile Include="MongoDbExtensions.cs" />
+    <Compile Include="MongoDbSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="HumbleConfig.FunctionalTests.dll.csx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HumbleConfig.ConfigR\HumbleConfig.ConfigR.csproj">
-      <Project>{D0E7A0E1-B3B7-4B09-8AE7-C971A87638E4}</Project>
-      <Name>HumbleConfig.ConfigR</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HumbleConfig.ConfigurationManager\HumbleConfig.ConfigurationManager.csproj">
-      <Project>{A1CA7848-F8B5-41AE-9AE8-19D1030B926B}</Project>
-      <Name>HumbleConfig.ConfigurationManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HumbleConfig.EnvironmentVariables\HumbleConfig.EnvironmentVariables.csproj">
-      <Project>{8C21C807-5FBB-46A6-AFE3-15028D257BAB}</Project>
-      <Name>HumbleConfig.EnvironmentVariables</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HumbleConfig.MongoDb\HumbleConfig.MongoDb.csproj">
-      <Project>{C0FFC254-2495-483A-AA70-1E592148D03E}</Project>
-      <Name>HumbleConfig.MongoDb</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HumbleConfig\HumbleConfig.csproj">
       <Project>{B04CB40D-08D8-44C6-B66E-F1ED0E97E507}</Project>
       <Name>HumbleConfig</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HumbleConfig.MongoDb.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
