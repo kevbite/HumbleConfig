@@ -42,7 +42,7 @@
       name: NuGet.org
       on:
         branch: master
-		
+
 -
   branches:
     only:
@@ -87,4 +87,4 @@
       name: NuGet.org
       on:
         branch: beta
-		
+
