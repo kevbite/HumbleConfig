@@ -1,13 +1,14 @@
 ﻿
 using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HumbleConfig.ConfigurationManager
 {
     public class ConfigurationManagerSource : IConfigurationSource
     {
-        public Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key)
+        public Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
             var configValue = System.Configuration.ConfigurationManager.AppSettings[key];
 

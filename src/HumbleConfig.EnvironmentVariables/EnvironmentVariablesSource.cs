@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HumbleConfig.EnvironmentVariables
 {
     public class EnvironmentVariablesSource : IConfigurationSource
     {
-        public Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key)
+        public Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
             var environmentValue = Environment.GetEnvironmentVariable(key);
 

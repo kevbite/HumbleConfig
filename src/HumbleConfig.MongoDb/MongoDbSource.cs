@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Headers;
+using System.Threading;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -15,10 +16,10 @@ namespace HumbleConfig.MongoDb
             _collection = collection;
         }
 
-        public async Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key)
+        public async Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
             var document = await _collection.Find(new BsonDocument("_id", key))
-                .SingleOrDefaultAsync()
+                .SingleOrDefaultAsync(cancellationToken)
                 .ConfigureAwait(false);
 
             if (document == null)

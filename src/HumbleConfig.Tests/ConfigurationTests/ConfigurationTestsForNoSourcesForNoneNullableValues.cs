@@ -20,7 +20,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         {
             try
             {
-                _value = _configuration.GetAppSetting<TValue>("key").Result;
+                _value = _configuration.GetAppSettingAsync<TValue>("key").Result;
             }
             catch (ArgumentException ex)
             {

@@ -23,7 +23,7 @@ namespace HumbleConfig.FunctionalTests
         [SetUp]
         public void WhenGettingAppSettings()
         {
-            _key1Actual = _configuration.GetAppSetting<string>("Key1").Result;
+            _key1Actual = _configuration.GetAppSettingAsync<string>("Key1").Result;
         }
 
         [Test]

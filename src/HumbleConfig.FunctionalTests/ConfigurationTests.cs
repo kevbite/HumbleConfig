@@ -56,13 +56,13 @@ namespace HumbleConfig.FunctionalTests
         [SetUp]
         public void WhenGettingAppSettings()
         {
-            _key1Actual = _configuration.GetAppSetting<string>(key1).Result;
-            _key2Actual = _configuration.GetAppSetting<string>(key2).Result;
-            _key3Actual = _configuration.GetAppSetting<string>(key3).Result;
-            _key4Actual = _configuration.GetAppSetting<string>(key4).Result;
-            _key5Actual = _configuration.GetAppSetting<string>(key5).Result;
-            _key6Actual = _configuration.GetAppSetting<string>(key6).Result;
-            _key7Actual = _configuration.GetAppSetting<string>(key7).Result;
+            _key1Actual = _configuration.GetAppSettingAsync<string>(key1).Result;
+            _key2Actual = _configuration.GetAppSettingAsync<string>(key2).Result;
+            _key3Actual = _configuration.GetAppSettingAsync<string>(key3).Result;
+            _key4Actual = _configuration.GetAppSettingAsync<string>(key4).Result;
+            _key5Actual = _configuration.GetAppSettingAsync<string>(key5).Result;
+            _key6Actual = _configuration.GetAppSettingAsync<string>(key6).Result;
+            _key7Actual = _configuration.GetAppSettingAsync<string>(key7).Result;
         }
 
         [Test]

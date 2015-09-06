@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace HumbleConfig
 {
     public interface IConfigurationSource
     {
-        Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key);
+        Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

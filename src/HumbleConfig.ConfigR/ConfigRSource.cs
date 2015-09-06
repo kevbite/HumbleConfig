@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using ConfigR;
 
 namespace HumbleConfig.ConfigR
@@ -12,7 +13,7 @@ namespace HumbleConfig.ConfigR
             _config = config;
         }
 
-        public Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key)
+        public Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
             object temp;
             var result = _config.TryGetValue(key, out temp);

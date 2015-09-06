@@ -25,7 +25,7 @@ namespace HumbleConfig.Tests
         public void WhenTryingToGetTheAppSettings()
         {
             var key = new Fixture().Create<string>();
-            _result = _source.TryGetAppSetting<TValue>(key).Result;
+            _result = _source.GetAppSettingAsync<TValue>(key).Result;
         }
 
         [Test]

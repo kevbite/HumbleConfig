@@ -30,7 +30,7 @@ namespace HumbleConfig.Tests
         [SetUp]
         public void WhenTryingToGetTheAppSettings()
         {
-            _result = _source.TryGetAppSetting<TValue>(_key).Result;
+            _result = _source.GetAppSettingAsync<TValue>(_key).Result;
         }
 
         [Test]
