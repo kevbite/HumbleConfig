@@ -51,7 +51,7 @@
     only:
       - beta
    
-  version: 3.0.0-beta4
+  version: 3.0.0-beta5
   
   assembly_info:
     assembly_version: '{version}'
