@@ -5,6 +5,7 @@ using HumbleConfig.ConfigurationManager;
 using HumbleConfig.EnvironmentVariables;
 using HumbleConfig.InMemory;
 using HumbleConfig.MongoDb;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using NUnit.Framework;
 
@@ -31,14 +32,16 @@ namespace HumbleConfig.FunctionalTests
         private string _key6Actual;
         private string _key7Actual;
 
+        private readonly IMongoCollection<AppSetting> _mongoCollection=  new MongoClient().GetDatabase("settings")
+                .GetCollection<AppSetting>("appSettings");
+
         [TestFixtureSetUp]
         public void GivenConfigurationWithEnvironmentVaribleAndConfigurationManager()
         {
             Environment.SetEnvironmentVariable(key1, "EnvironmentVariable");
             Environment.SetEnvironmentVariable(key2, "EnvironmentVariable");
-
-            new MongoClient().GetDatabase("settings")
-                .GetCollection<AppSetting>("appSettings")
+            
+            _mongoCollection
                 .InsertOneAsync(new AppSetting() {Id = key7, Value = "MongoDB"})
                 .Wait();
 
@@ -102,6 +105,12 @@ namespace HumbleConfig.FunctionalTests
         public void ThenKey7PullsFromMongoDb()
         {
             Assert.That(_key7Actual, Is.EqualTo("MongoDB"));
+        }
+
+        [TestFixtureTearDown]
+        public void Kill()
+        {
+            _mongoCollection.DeleteOneAsync(new BsonDocument("_id", key7)).Wait();
         }
     }
 }
