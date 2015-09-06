@@ -41,7 +41,7 @@ configuration.AddInMemory(defaults);
 ```
 Once we're happy with our configuration we can pull out an app setting:
 ```csharp
-var value = configuration.GetAppSetting("key");
+var value = configuration.GetAppSetting<string>("key");
 ```
 ### Key formatters
 Ever been in config hell where you don't know what key is used where.
