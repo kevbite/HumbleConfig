@@ -23,7 +23,8 @@ namespace HumbleConfig.Tests.ConfigurationTests
                 .Returns(_formattedKey);
 
             _source = new Mock<IConfigurationSource>();
-            _source.Setup(x => x.TryGetAppSetting(_formattedKey, out value)).ReturnsAsync(true);
+            _source.Setup(x => x.TryGetAppSetting<TValue>(_formattedKey))
+                            .ReturnsAsync(ConfigurationSourceResult<TValue>.SuccessResult(value));
             
             _configuration = new Configuration();
             _configuration.AddConfigurationSource(_source.Object);
@@ -39,8 +40,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         [Test]
         public void ThenTheSourceIsCalledWithTheFormattedKey()
         {
-            TValue temp;
-            _source.Verify(x => x.TryGetAppSetting(_formattedKey, out temp), Times.Once);
+            _source.Verify(x => x.TryGetAppSetting<TValue>(_formattedKey), Times.Once);
         }
     }
 }

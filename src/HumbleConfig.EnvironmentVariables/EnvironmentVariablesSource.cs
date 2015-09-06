@@ -5,23 +5,22 @@ namespace HumbleConfig.EnvironmentVariables
 {
     public class EnvironmentVariablesSource : IConfigurationSource
     {
-        public Task<bool> TryGetAppSetting<T>(string key, out T value)
+        public Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key)
         {
             var environmentValue = Environment.GetEnvironmentVariable(key);
 
             if (environmentValue == null)
             {
-                value = default(T);
-                return Task.FromResult(false);
+                return Task.FromResult(ConfigurationSourceResult<TValue>.FailedResult());
             }
             else
             {
-                var valueType = typeof (T);
+                var valueType = typeof (TValue);
                 valueType = Nullable.GetUnderlyingType(valueType) ?? valueType;
 
-                value = (T) Convert.ChangeType(environmentValue, valueType);
+                var value = (TValue) Convert.ChangeType(environmentValue, valueType);
 
-                return Task.FromResult(true);
+                return Task.FromResult(ConfigurationSourceResult<TValue>.SuccessResult(value));
             }
         }
     }

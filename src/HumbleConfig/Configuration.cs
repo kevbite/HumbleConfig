@@ -15,10 +15,10 @@ namespace HumbleConfig
             var formattedKey = _keyFormatter.FormatKey(key);
             foreach (var configurationSource in _configurationSources)
             {
-                TValue value;
-                if (await configurationSource.TryGetAppSetting(formattedKey, out value).ConfigureAwait(false))
+                var result = await configurationSource.TryGetAppSetting<TValue>(formattedKey).ConfigureAwait(false);
+                if (result.KeyExists)
                 {
-                    return value;
+                    return result.Value;
                 }
             }
 

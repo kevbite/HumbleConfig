@@ -4,6 +4,6 @@ namespace HumbleConfig
 {
     public interface IConfigurationSource
     {
-        Task<bool> TryGetAppSetting<T>(string key, out T value);
+        Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key);
     }
 }

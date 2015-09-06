@@ -7,22 +7,21 @@ namespace HumbleConfig.ConfigurationManager
 {
     public class ConfigurationManagerSource : IConfigurationSource
     {
-        public Task<bool> TryGetAppSetting<T>(string key, out T value)
+        public Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key)
         {
             var configValue = System.Configuration.ConfigurationManager.AppSettings[key];
 
             if (configValue == null)
             {
-                value = default(T);
-                return Task.FromResult(false);
+                return Task.FromResult(ConfigurationSourceResult<TValue>.FailedResult());
             }
             else
             {
-                var valueType = typeof(T);
+                var valueType = typeof(TValue);
                 valueType = Nullable.GetUnderlyingType(valueType) ?? valueType;
 
-                value = (T)Convert.ChangeType(configValue, valueType);
-                return Task.FromResult(true);
+                var value = (TValue)Convert.ChangeType(configValue, valueType);
+                return Task.FromResult(ConfigurationSourceResult<TValue>.SuccessResult(value));
             }
         }
     }

@@ -12,14 +12,15 @@ namespace HumbleConfig.ConfigR
             _config = config;
         }
 
-        public Task<bool>TryGetAppSetting<T>(string key, out T value)
+        public Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key)
         {
             object temp;
             var result = _config.TryGetValue(key, out temp);
 
-            value = result ? (T)temp : default(T);
+            var sourceResult = result ? ConfigurationSourceResult<TValue>.SuccessResult((TValue)temp)
+                            : ConfigurationSourceResult<TValue>.FailedResult();
 
-            return Task.FromResult(result);
+            return Task.FromResult(sourceResult);
         }
     }
 }

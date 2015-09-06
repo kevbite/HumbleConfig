@@ -8,14 +8,15 @@ namespace HumbleConfig.Tests.Stubs
         public IDictionary<string, object> AppSettings { get; } = new Dictionary<string, object>();
         
         
-        public Task<bool> TryGetAppSetting<T>(string key, out T value)
+        public Task<ConfigurationSourceResult<TValue>> TryGetAppSetting<TValue>(string key)
         {
             object temp;
             var result = AppSettings.TryGetValue(key, out temp);
 
-            value = result ? (T) temp : default(T);
+            var sourceResult = result ? ConfigurationSourceResult<TValue>.SuccessResult((TValue)temp)
+                            : ConfigurationSourceResult<TValue>.FailedResult();
 
-            return Task.FromResult(result);
+            return Task.FromResult(sourceResult);
         }
     }
 }

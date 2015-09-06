@@ -11,8 +11,7 @@ namespace HumbleConfig.Tests
     public abstract class ConfigurationSourceTestsForNoneExistingKey<TValue, TConfigurationSourceFactory> : AllValueTests<TValue> where TConfigurationSourceFactory : IConfigurationSourceFactory, new()
     {
         private IConfigurationSource _source;
-        private bool _result;
-        private TValue _value;
+        private ConfigurationSourceResult<TValue> _result;
 
         [TestFixtureSetUp]
         public void ConfigRSourceTestsWithNoneExistingConfigRKey()
@@ -25,19 +24,19 @@ namespace HumbleConfig.Tests
         public void WhenTryingToGetTheAppSettings()
         {
             var key = new Fixture().Create<string>();
-            _result = _source.TryGetAppSetting(key, out _value).Result;
+            _result = _source.TryGetAppSetting<TValue>(key).Result;
         }
 
         [Test]
         public void ThenNullIsReturned()
         {
-            Assert.That(_value, Is.EqualTo(default(TValue)));
+            Assert.That(_result.Value, Is.EqualTo(default(TValue)));
         }
 
         [Test]
-        public void ThenTheResultIsFalse()
+        public void ThenTheResultKEyExistsIsFalse()
         {
-            Assert.That(_result, Is.False);
+            Assert.That(_result.KeyExists, Is.False);
         }
     }
 }
