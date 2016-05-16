@@ -14,8 +14,8 @@
    
   os: Visual Studio 2015
   
-  init:
-    - ps: .\init.ps1
+  install:
+    - ps: .\install.ps1
   
   before_build:
     - ps : .\build-before_build.ps1
@@ -72,8 +72,8 @@
    
   os: Visual Studio 2015
   
-  init:
-    - ps: .\init.ps1
+  install:
+    - ps: .\install.ps1
   
   before_build:
     - ps : .\build-before_build.ps1
