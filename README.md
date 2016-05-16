@@ -36,7 +36,9 @@ configuration.AddEnvironmentVariables()
 			 .AddConfigR()
 			 .AddMongoDb("mongodb://localhost/settings", "appSettings");
 ```
-We can also add some default values by using a InMemory source:
+The order in which we add the configuration sources will determine which configuration values will take priority, in the above example environment variables will override any configuration values within mongodb.
+
+Now knowing the priority of configuration values, we can add some default values by using a InMemory source:
 ```csharp
 var defaults = new Dictionary<string, object>() { {"UserName", "Kevin.Smith"} };
 
