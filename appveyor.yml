@@ -3,7 +3,7 @@
     only:
       - master
    
-  version: 3.0.4
+  version: 3.0.5
   
   assembly_info:
     assembly_version: '{version}'
@@ -50,6 +50,9 @@
         branch: master
     
     - provider: GitHub
+      description: ''
+      auth_token:
+        secure: +QYYXf1o06ZxmMAfGQN/n3rfgIHtjY9JcFRvps5vmbqkjWqa9PT7Z84poPCelWz8
       artifact: /.*\.nupkg/
       draft: false
       prerelease: false
