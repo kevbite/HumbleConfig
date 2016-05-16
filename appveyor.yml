@@ -3,7 +3,7 @@
     only:
       - master
    
-  version: 3.0.5
+  version: 3.0.6
   
   assembly_info:
     assembly_version: '{version}'
