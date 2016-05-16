@@ -48,6 +48,13 @@
       name: NuGet.org
       on:
         branch: master
+    
+    - provider: GitHub
+      artifact: /.*\.nupkg/
+      draft: false
+      prerelease: false
+      on:
+        branch: master
 
 -
   branches:
