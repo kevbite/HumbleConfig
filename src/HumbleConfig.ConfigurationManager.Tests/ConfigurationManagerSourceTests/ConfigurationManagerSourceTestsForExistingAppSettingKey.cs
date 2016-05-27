@@ -4,7 +4,8 @@ using NUnit.Framework;
 
 namespace HumbleConfig.ConfigurationManager.Tests.ConfigurationManagerSourceTests
 {
-    [TestFixture]
+    [TestFixtureSource(typeof(NonNullableTestFixtureCases))]
+    [TestFixtureSource(typeof(NullableTestFixtureCases))]
     public class ConfigurationManagerSourceTestsForExistingAppSettingKey<TValue> : ConfigurationSourceTestsForExistingKey<TValue>
     {
         protected override IConfigurationSource GivenConfigurationSourceWithExistingRKey(string key, TValue value)
