@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using ConfigR;
 using HumbleConfig.ConfigR;
 using HumbleConfig.ConfigurationManager;
 using HumbleConfig.EnvironmentVariables;
@@ -32,10 +34,10 @@ namespace HumbleConfig.FunctionalTests
         private string _key6Actual;
         private string _key7Actual;
 
-        private readonly IMongoCollection<AppSetting> _mongoCollection=  new MongoClient().GetDatabase("settings")
+        private readonly IMongoCollection<AppSetting> _mongoCollection = new MongoClient().GetDatabase(Guid.NewGuid().ToString())
                 .GetCollection<AppSetting>("appSettings");
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenConfigurationWithEnvironmentVaribleAndConfigurationManager()
         {
             Environment.SetEnvironmentVariable(key1, "EnvironmentVariable");
@@ -49,8 +51,8 @@ namespace HumbleConfig.FunctionalTests
                 .AddEnvironmentVariables()
                 .AddConfigurationManager()
                 .AddInMemory(new Dictionary<string, object>() { {key5, "InMemory"} })
-                .AddConfigR()
-                .AddMongoDb("mongodb://localhost/settings", "appSettings");
+                .AddConfigR(Config.Global.LoadScriptFile(new Uri(Assembly.GetExecutingAssembly().CodeBase + ".csx").LocalPath))
+                .AddMongoDb($"mongodb://localhost/{_mongoCollection.Database.DatabaseNamespace}", "appSettings");
         }
 
         [SetUp]
@@ -107,7 +109,7 @@ namespace HumbleConfig.FunctionalTests
             Assert.That(_key7Actual, Is.EqualTo("MongoDB"));
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void DestroyEvidence()
         {
             _mongoCollection.DeleteOneAsync(new BsonDocument("_id", key7)).Wait();

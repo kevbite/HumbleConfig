@@ -4,7 +4,9 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    public class ConfigurationTestsForMultipleSourcesAndAllHaveMatchingKeys<TValue> : AllValueTests<TValue>
+    [TestFixtureSource(typeof(NonNullableTestFixtureCases))]
+    [TestFixtureSource(typeof(NullableTestFixtureCases))]
+    public class ConfigurationTestsForMultipleSourcesAndAllHaveMatchingKeys<TValue>
     {
         private Configuration _configuration;
         private TValue _value;
@@ -13,7 +15,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         private ConfigurationSourceStub _source2;
         private string _key;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenAConfigurationWithMultipleSourcesAndAllHaveMatchingKeys()
         {
             var fixture = new Fixture();

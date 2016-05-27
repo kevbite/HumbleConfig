@@ -3,13 +3,14 @@ using NUnit.Framework;
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    public class ConfigurationTestsForNoSourcesForNoneNullableValues<TValue> : NoneNullableTests<TValue>
+    [TestFixtureSource(typeof(NonNullableTestFixtureCases))]
+    public class ConfigurationTestsForNoSourcesForNoneNullableValues<TValue>
     {
         private Configuration _configuration;
         private TValue _value;
         private ArgumentException _exception;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenAConfigurationWithNoSourcesLoaded()
         {
             _configuration = new Configuration();

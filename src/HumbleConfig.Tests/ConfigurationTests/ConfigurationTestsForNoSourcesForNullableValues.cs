@@ -2,12 +2,13 @@
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    public class ConfigurationTestsForNoSourcesForNullableValues<TValue> : NullableValueTests<TValue>
+    [TestFixtureSource(typeof(NullableTestFixtureCases))]
+    public class ConfigurationTestsForNoSourcesForNullableValues<TValue>
     {
         private Configuration _configuration;
         private TValue _value;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenAConfigurationWithNoSourcesLoaded()
         {
             _configuration = new Configuration();

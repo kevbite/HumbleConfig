@@ -8,12 +8,14 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests
 {
-    public abstract class ConfigurationSourceTestsForNoneExistingKey<TValue> : AllValueTests<TValue>
+    [TestFixtureSource(typeof(NonNullableTestFixtureCases))]
+    [TestFixtureSource(typeof(NullableTestFixtureCases))]
+    public abstract class ConfigurationSourceTestsForNoneExistingKey<TValue>
     {
         private IConfigurationSource _source;
         private ConfigurationSourceResult<TValue> _result;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenConfigurationSourceWithNoneExistingKey()
         {
             _source = CreateConfigurationSource();
