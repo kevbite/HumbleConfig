@@ -12,7 +12,7 @@ namespace HumbleConfig.FunctionalTests
         
         private string _key1Actual;
         
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenConfigurationWithKeyPrefixer()
         {
             _configuration = new Configuration()

@@ -5,7 +5,9 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    public class ConfigurationTestsForKeyFormatter<TValue> : AllValueTests<TValue>
+    [TestFixtureSource(typeof(NonNullableTestFixtureCases))]
+    [TestFixtureSource(typeof(NullableTestFixtureCases))]
+    public class ConfigurationTestsForKeyFormatter<TValue>
     {
         private readonly Fixture _fixture = new Fixture();
         private string _formattedKey;
@@ -13,7 +15,7 @@ namespace HumbleConfig.Tests.ConfigurationTests
         private Configuration _configuration;
         private string _key;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenAnConfigurationWithACustomKeyFormatter()
         {
             _key = _fixture.Create<string>();

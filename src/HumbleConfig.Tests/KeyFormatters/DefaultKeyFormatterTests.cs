@@ -16,7 +16,7 @@ namespace HumbleConfig.Tests.KeyFormatters
         private string _key;
         private string _formattedKey;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenADefaultKeyFormatter()
         {
             _formatter = new DefaultKeyFormatter();

@@ -4,13 +4,14 @@ using NUnit.Framework;
 
 namespace HumbleConfig.Tests.ConfigurationTests
 {
-    public class ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNoneNullables<TValue> : NoneNullableTests<TValue>
+    [TestFixtureSource(typeof(NonNullableTestFixtureCases))]
+    public class ConfigurationTestsForOneSourceThatHasNoMatchingKeyForNoneNullables<TValue>
     {
         private Configuration _configuration;
         private TValue _value;
         private ArgumentException _exception;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenAConfigurationWithOneSourceThatHasNoMatchingKey()
         {
             _configuration = new Configuration();

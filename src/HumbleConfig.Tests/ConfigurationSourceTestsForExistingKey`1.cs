@@ -8,7 +8,9 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests
 {
-    public abstract class ConfigurationSourceTestsForExistingKey<TValue> : AllValueTests<TValue>
+    [TestFixtureSource(typeof(NonNullableTestFixtureCases))]
+    [TestFixtureSource(typeof(NullableTestFixtureCases))]
+    public abstract class ConfigurationSourceTestsForExistingKey<TValue>
     {
         private IConfigurationSource _source;
         private ConfigurationSourceResult<TValue> _result;
@@ -16,7 +18,7 @@ namespace HumbleConfig.Tests
         private string _key;
         private TValue _expectedValue;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenConfigurationSourceWithExistingRKey()
         {
             _key = _fixture.Create<string>();
@@ -45,7 +47,7 @@ namespace HumbleConfig.Tests
             Assert.That(_result.KeyExists, Is.True);
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void DestroyEvidence()
         {
             DestroyEvidence(_key);

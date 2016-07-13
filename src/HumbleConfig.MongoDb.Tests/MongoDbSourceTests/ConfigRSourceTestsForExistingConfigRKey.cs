@@ -1,9 +1,12 @@
 ﻿using HumbleConfig.Tests;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using NUnit.Framework;
 
 namespace HumbleConfig.MongoDb.Tests.MongoDbSourceTests
 {
+    [TestFixtureSource(typeof(NonNullableTestFixtureCases))]
+    [TestFixtureSource(typeof(NullableTestFixtureCases))]
     public class MongoDbSourceTestsForExistingKey<TValue> : ConfigurationSourceTestsForExistingKey<TValue>
     {
         private readonly IMongoCollection<AppSetting> _collection = new MongoClient().GetDatabase("test").GetCollection<AppSetting>("appSettings");

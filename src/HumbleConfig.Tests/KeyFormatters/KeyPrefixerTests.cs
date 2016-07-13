@@ -11,7 +11,7 @@ namespace HumbleConfig.Tests.KeyFormatters
         private string _formattedKey;
         private string _prefix;
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void GivenAKeyPrefixer()
         {
             _prefix = new Fixture().Create<string>();

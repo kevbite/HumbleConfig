@@ -6,7 +6,8 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.EnvironmentVariables.Tests.EnvironmentVariablesSourceTests
 {
-    [TestFixture]
+    [TestFixtureSource(typeof(NonNullableTestFixtureCases))]
+    [TestFixtureSource(typeof(NullableTestFixtureCases))]
     public class EnvironmentVariablesSourceTestsForNoneExistingEnvironmentVariable<TValue> : ConfigurationSourceTestsForNoneExistingKey<TValue>
     {
         protected override IConfigurationSource CreateConfigurationSource()
