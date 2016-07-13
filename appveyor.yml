@@ -1,5 +1,9 @@
 -
-  version: 0.0.{build}
+  branches:
+    only:
+      - master
+  skip_tags: true
+  version: 3.0.7
   
   assembly_info:
     assembly_version: '{version}'
@@ -54,3 +58,45 @@
       prerelease: false
       on:
         branch: master
+
+-
+  skip_tags: true
+  version: 3.0.7-{branch}
+  
+  assembly_info:
+    assembly_version: '{version}'
+    assembly_file_version: '{version}'
+    assembly_informational_version: '{version}'
+    file: AssemblyInfo.*
+    patch: true
+   
+  os: Visual Studio 2015
+  
+  install:
+    - ps: .\install.ps1
+  
+  before_build:
+    - ps : .\build-before_build.ps1
+  
+  build:
+    verbosity: minimal
+    parallel: true
+    publish_nuget: true
+   
+  configuration: Release
+  cache:
+    - src\packages -> **\packages.config
+  
+  services:
+    - mongodb
+  
+  test:
+    assemblies:
+      - '**\*.Tests.dll'
+      - '**\*.FunctionalTests.dll'
+
+  artifacts:
+    - path: '*.nupkg'
+  
+  on_finish:
+    - ps : .\build-on_finish.ps1
