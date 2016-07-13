@@ -2,8 +2,8 @@
   branches:
     only:
       - master
-   
-  version: 3.0.7
+  skip_tags: true
+  version: 3.0.8
   
   assembly_info:
     assembly_version: '{version}'
@@ -60,11 +60,8 @@
         branch: master
 
 -
-  branches:
-    only:
-      - beta
-   
-  version: 3.0.0-beta5
+  skip_tags: true
+  version: 3.0.8-{branch}
   
   assembly_info:
     assembly_version: '{version}'
@@ -102,11 +99,4 @@
     - path: '*.nupkg'
   
   on_finish:
-    - ps : .\build-on_finish.ps1   
-  
-  deploy:
-    - provider: Environment
-      name: NuGet.org
-      on:
-        branch: beta
-
+    - ps : .\build-on_finish.ps1
