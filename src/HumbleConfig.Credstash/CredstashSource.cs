@@ -25,7 +25,7 @@ namespace HumbleConfig.Credstash
                 var valueType = typeof(TValue);
                 valueType = Nullable.GetUnderlyingType(valueType) ?? valueType;
 
-                var value = (TValue)Convert.ChangeType(credstashValue, valueType);
+                var value = (TValue)Convert.ChangeType(credstashValue.Value, valueType);
 
                 return ConfigurationSourceResult<TValue>.SuccessResult(value);
             }

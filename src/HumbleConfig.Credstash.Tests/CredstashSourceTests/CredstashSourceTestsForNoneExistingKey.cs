@@ -1,5 +1,6 @@
 ﻿using HumbleConfig.Tests;
 using Moq;
+using Narochno.Primitives;
 using NUnit.Framework;
 
 namespace HumbleConfig.Credstash.Tests.CredstashSourceTests
@@ -10,7 +11,11 @@ namespace HumbleConfig.Credstash.Tests.CredstashSourceTests
     {
         protected override IConfigurationSource CreateConfigurationSource()
         {
-            return new CredstashSource(new Mock<ICredstash>().Object);
+            var credstash = new Mock<ICredstash>();
+            credstash.Setup(x => x.GetSecretAsync(It.IsAny<string>(), null, null, true))
+                .ReturnsAsync(new Optional<string>(null));
+
+            return new CredstashSource(credstash.Object);
         }
     }
 }
