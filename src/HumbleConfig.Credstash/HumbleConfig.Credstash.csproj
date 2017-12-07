@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CredstashExtensions.cs" />
     <Compile Include="CredstashSource.cs" />
     <Compile Include="CredstashWrapper.cs" />
     <Compile Include="ICredstash.cs" />

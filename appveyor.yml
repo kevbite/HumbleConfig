@@ -36,6 +36,9 @@
     assemblies:
       - '**\*.Tests.dll'
       - '**\*.FunctionalTests.dll'
+    categories:
+      except:
+        - Credstash
 
   artifacts:
     - path: '*.nupkg'
@@ -94,6 +97,9 @@
     assemblies:
       - '**\*.Tests.dll'
       - '**\*.FunctionalTests.dll'
+    categories:
+      except:
+        - Credstash
 
   artifacts:
     - path: '*.nupkg'

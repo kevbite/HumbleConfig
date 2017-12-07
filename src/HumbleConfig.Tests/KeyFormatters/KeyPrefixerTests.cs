@@ -37,7 +37,6 @@ namespace HumbleConfig.Tests.KeyFormatters
             Assert.That(_formattedKey, Does.EndWith(_key));
         }
 
-
         [Test]
         public void ThenTheFormattedKeyIsTheCorrectLength()
         {
