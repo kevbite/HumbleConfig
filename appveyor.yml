@@ -61,7 +61,7 @@
 
 -
   skip_tags: true
-  version: 3.0.9-{branch}
+  version: 3.0.9-{branch}{build}
   
   assembly_info:
     assembly_version: '{version}'
