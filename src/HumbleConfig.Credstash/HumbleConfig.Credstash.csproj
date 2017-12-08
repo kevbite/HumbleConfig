@@ -43,8 +43,8 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.8.1.3\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="Narochno.Credstash, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Narochno.Credstash.2.0.0\lib\netstandard2.0\Narochno.Credstash.dll</HintPath>
+    <Reference Include="Narochno.Credstash, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Narochno.Credstash.2.1.1\lib\netstandard2.0\Narochno.Credstash.dll</HintPath>
     </Reference>
     <Reference Include="Narochno.Primitives, Version=2.6.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Narochno.Primitives.2.6.6\lib\net45\Narochno.Primitives.dll</HintPath>
@@ -61,8 +61,6 @@
   <ItemGroup>
     <Compile Include="CredstashExtensions.cs" />
     <Compile Include="CredstashSource.cs" />
-    <Compile Include="CredstashWrapper.cs" />
-    <Compile Include="ICredstash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

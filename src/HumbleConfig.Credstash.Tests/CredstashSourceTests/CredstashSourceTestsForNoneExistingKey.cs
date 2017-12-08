@@ -1,5 +1,6 @@
 ﻿using HumbleConfig.Tests;
 using Moq;
+using Narochno.Credstash;
 using Narochno.Primitives;
 using NUnit.Framework;
 
