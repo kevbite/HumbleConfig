@@ -4,16 +4,14 @@ namespace HumbleConfig.ConfigR
 {
     public static class ConfigRExtensions
     {
-        public static Configuration AddConfigR(this Configuration configuration)
+        public static IConfigurationSourceConfigurator AddConfigR(this IConfigurationConfigurator configuration)
         {
             return configuration.AddConfigR(Config.Global);
         }
 
-        public static Configuration AddConfigR(this Configuration configuration, IConfig config)
+        public static IConfigurationSourceConfigurator AddConfigR(this IConfigurationConfigurator configuration, IConfig config)
         {
-            configuration.AddConfigurationSource(new ConfigRSource(config));
-
-            return configuration;
+            return configuration.AddConfigurationSource(new ConfigRSource(config));
         }
     }
 }

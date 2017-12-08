@@ -6,7 +6,7 @@ using HumbleConfig.KeyFormatters;
 
 namespace HumbleConfig
 {
-    public class Configuration : IConfiguration, IConfigurationConfigurator
+    public class Configuration : IConfigurationConfigurator, IConfiguration
     {
         private readonly List<ConfigurationSourceWrapper> _configurationSources = new List<ConfigurationSourceWrapper>();
         private IKeyFormatter _keyFormatter = new DefaultKeyFormatter();
@@ -32,13 +32,7 @@ namespace HumbleConfig
 
             throw new ArgumentException($"No value could be found for the given key of {key}", nameof(key));
         }
-
-
-        public string GetConnectionString(string key)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IConfigurationSourceConfigurator AddConfigurationSource(IConfigurationSource configurationSource)
         {
             var wrapper = new ConfigurationSourceWrapper(this, configurationSource);
@@ -46,6 +40,11 @@ namespace HumbleConfig
             _configurationSources.Add(wrapper);
 
             return wrapper;
+        }
+
+        public IConfiguration GetConfiguration()
+        {
+            return this;
         }
 
         public void SetKeyFormatter(IKeyFormatter keyFormatter)

@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HumbleConfig
 {
     public class ConfigurationSourceWrapper : IConfigurationSourceConfigurator
     {
-        private readonly IConfigurationConfigurator _configurationConfigurator;
+        private readonly Configuration _configuration;
 
-        public ConfigurationSourceWrapper(IConfigurationConfigurator configurationConfigurator, IConfigurationSource configurationSource)
+        public ConfigurationSourceWrapper(Configuration configuration, IConfigurationSource configurationSource)
         {
-            _configurationConfigurator = configurationConfigurator;
+            _configuration = configuration;
             Source = configurationSource;
         }
 
@@ -23,7 +25,17 @@ namespace HumbleConfig
 
         public IConfigurationSourceConfigurator AddConfigurationSource(IConfigurationSource configurationSource)
         {
-            return _configurationConfigurator.AddConfigurationSource(configurationSource);
+            return _configuration.AddConfigurationSource(configurationSource);
+        }
+
+        public Task<TValue> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return _configuration.GetAppSettingAsync<TValue>(key, cancellationToken);
+        }
+
+        public IConfiguration GetConfiguration()
+        {
+            return _configuration;
         }
     }
 }

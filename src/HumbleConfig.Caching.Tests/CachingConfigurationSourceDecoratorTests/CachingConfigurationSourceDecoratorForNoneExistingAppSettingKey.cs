@@ -16,13 +16,8 @@ namespace HumbleConfig.Caching.Tests.CachingConfigurationSourceDecoratorTests
             var innerSource = new Mock<IConfigurationSource>();
             innerSource.Setup(x => x.GetAppSettingAsync<TValue>(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(ConfigurationSourceResult<TValue>.FailedResult());
-
-            var cacheItemPolicy = new CacheItemPolicy()
-            {
-                AbsoluteExpiration = DateTimeOffset.UtcNow.AddMinutes(1)
-            };
-
-            var source = new CachingConfigurationSourceDecorator(innerSource.Object, MemoryCache.Default, cacheItemPolicy);
+            
+            var source = new CachingConfigurationSourceDecorator(innerSource.Object, MemoryCache.Default, () => new CacheItemPolicy());
 
             return source;
         }

@@ -2,11 +2,9 @@
 {
     public static class ConfigurationManagerExtensions
     {
-        public static Configuration AddConfigurationManager(this Configuration configuration)
+        public static IConfigurationSourceConfigurator AddConfigurationManager(this IConfigurationConfigurator configuration)
         {
-            configuration.AddConfigurationSource(new ConfigurationManagerSource());
-
-            return configuration;
+            return configuration.AddConfigurationSource(new ConfigurationManagerSource());
         }
     }
 }

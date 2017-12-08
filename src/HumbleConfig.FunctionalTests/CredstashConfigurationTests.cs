@@ -19,7 +19,7 @@ namespace HumbleConfig.FunctionalTests
     [Category("Credstash")]
     public class CredstashConfigurationTests
     {
-        private Configuration _configuration;
+        private IConfiguration _configuration;
 
         private string key1 = "key1";
         private string key2 = "key2";
@@ -35,7 +35,8 @@ namespace HumbleConfig.FunctionalTests
             // $ credstash --table credstash-test-2E24F0AC-DD37-4DE1-939E-E2D1ADF66149 put key1 Credstash
             _configuration = new Configuration()
                 .AddCredstash(RegionEndpoint.EUWest1, "credstash-test-2E24F0AC-DD37-4DE1-939E-E2D1ADF66149")
-                .AddInMemory(new Dictionary<string, object>() {{key2, "InMemory"}});
+                .AddInMemory(new Dictionary<string, object>() {{key2, "InMemory"}})
+                .GetConfiguration();
         }
 
         [SetUp]

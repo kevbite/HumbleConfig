@@ -2,11 +2,9 @@
 {
     public static class EnvironmentVariablesExtensions
     {
-        public static Configuration AddEnvironmentVariables(this Configuration configuration)
+        public static IConfigurationSourceConfigurator AddEnvironmentVariables(this IConfigurationConfigurator configuration)
         {
-            configuration.AddConfigurationSource(new EnvironmentVariablesSource());
-
-            return configuration;
+            return configuration.AddConfigurationSource(new EnvironmentVariablesSource());
         }
     }
 }

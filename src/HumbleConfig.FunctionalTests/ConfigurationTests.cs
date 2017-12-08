@@ -52,7 +52,8 @@ namespace HumbleConfig.FunctionalTests
                 .AddConfigurationManager()
                 .AddInMemory(new Dictionary<string, object>() { {key5, "InMemory"} })
                 .AddConfigR(Config.Global.LoadScriptFile(new Uri(Assembly.GetExecutingAssembly().CodeBase + ".csx").LocalPath))
-                .AddMongoDb($"mongodb://localhost/{_mongoCollection.Database.DatabaseNamespace}", "appSettings");
+                .AddMongoDb($"mongodb://localhost/{_mongoCollection.Database.DatabaseNamespace}", "appSettings")
+                .GetConfiguration();
         }
 
         [SetUp]
