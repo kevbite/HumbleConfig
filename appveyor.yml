@@ -3,7 +3,7 @@
     only:
       - master
   skip_tags: true
-  version: 3.1.0
+  version: 3.1.1
   
   assembly_info:
     assembly_version: '{version}'
@@ -52,19 +52,14 @@
       on:
         branch: master
     
-    - provider: GitHub
-      description: ''
-      auth_token:
-        secure: +QYYXf1o06ZxmMAfGQN/n3rfgIHtjY9JcFRvps5vmbqkjWqa9PT7Z84poPCelWz8
-      artifact: /.*\.nupkg/
-      draft: false
-      prerelease: false
+    - provider: Environment
+      name: GitHub
       on:
         branch: master
 
 -
   skip_tags: true
-  version: 3.1.0-{branch}{build}
+  version: 3.1.1-{branch}{build}
   
   assembly_info:
     assembly_version: '{version}'
