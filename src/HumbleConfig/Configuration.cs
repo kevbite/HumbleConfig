@@ -6,9 +6,9 @@ using HumbleConfig.KeyFormatters;
 
 namespace HumbleConfig
 {
-    public class Configuration : IConfiguration
+    public class Configuration : IConfigurationConfigurator, IConfiguration
     {
-        private readonly List<IConfigurationSource> _configurationSources = new List<IConfigurationSource>();
+        private readonly List<ConfigurationSourceWrapper> _configurationSources = new List<ConfigurationSourceWrapper>();
         private IKeyFormatter _keyFormatter = new DefaultKeyFormatter();
 
         public async Task<TValue> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
@@ -16,7 +16,7 @@ namespace HumbleConfig
             var formattedKey = _keyFormatter.FormatKey(key);
             foreach (var configurationSource in _configurationSources)
             {
-                var result = await configurationSource.GetAppSettingAsync<TValue>(formattedKey, cancellationToken).ConfigureAwait(false);
+                var result = await configurationSource.Source.GetAppSettingAsync<TValue>(formattedKey, cancellationToken).ConfigureAwait(false);
                 if (result.KeyExists)
                 {
                     return result.Value;
@@ -32,16 +32,19 @@ namespace HumbleConfig
 
             throw new ArgumentException($"No value could be found for the given key of {key}", nameof(key));
         }
-
-
-        public string GetConnectionString(string key)
+        
+        public IConfigurationSourceConfigurator AddConfigurationSource(IConfigurationSource configurationSource)
         {
-            throw new NotImplementedException();
+            var wrapper = new ConfigurationSourceWrapper(this, configurationSource);
+
+            _configurationSources.Add(wrapper);
+
+            return wrapper;
         }
 
-        public void AddConfigurationSource(IConfigurationSource configurationSource)
+        public IConfiguration GetConfiguration()
         {
-            _configurationSources.Add(configurationSource);
+            return this;
         }
 
         public void SetKeyFormatter(IKeyFormatter keyFormatter)

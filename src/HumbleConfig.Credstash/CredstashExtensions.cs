@@ -7,16 +7,16 @@ namespace HumbleConfig.Credstash
 {
     public static class CredstashExtensions
     {
-        public static Configuration AddCredstash(this Configuration configuration, CredstashOptions options, IAmazonKeyManagementService amazonKeyManagementService, IAmazonDynamoDB amazonDynamoDb)
+        public static IConfigurationSourceConfigurator AddCredstash(this IConfigurationConfigurator configuration, CredstashOptions options, IAmazonKeyManagementService amazonKeyManagementService, IAmazonDynamoDB amazonDynamoDb)
         {
             var credstash = new Narochno.Credstash.Credstash(options, amazonKeyManagementService, amazonDynamoDb);
 
-            configuration.AddConfigurationSource(new CredstashSource(credstash));
+            return configuration.AddConfigurationSource(new CredstashSource(credstash));
 
-            return configuration;
+            
         }
 
-        public static Configuration AddCredstash(this Configuration configuration, Amazon.RegionEndpoint region, string table)
+        public static IConfigurationSourceConfigurator AddCredstash(this IConfigurationConfigurator configuration, Amazon.RegionEndpoint region, string table)
         {
             var credstashOptions = new CredstashOptions()
             {
