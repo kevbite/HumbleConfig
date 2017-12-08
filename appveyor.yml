@@ -3,7 +3,7 @@
     only:
       - master
   skip_tags: true
-  version: 3.0.9
+  version: 3.1.0
   
   assembly_info:
     assembly_version: '{version}'
@@ -12,7 +12,7 @@
     file: AssemblyInfo.*
     patch: true
    
-  os: Visual Studio 2015
+  os: Visual Studio 2017
   
   install:
     - ps: .\install.ps1
@@ -36,6 +36,9 @@
     assemblies:
       - '**\*.Tests.dll'
       - '**\*.FunctionalTests.dll'
+    categories:
+      except:
+        - Credstash
 
   artifacts:
     - path: '*.nupkg'
@@ -61,7 +64,7 @@
 
 -
   skip_tags: true
-  version: 3.0.9-{branch}
+  version: 3.1.0-{branch}{build}
   
   assembly_info:
     assembly_version: '{version}'
@@ -70,7 +73,7 @@
     file: AssemblyInfo.*
     patch: true
    
-  os: Visual Studio 2015
+  os: Visual Studio 2017
   
   install:
     - ps: .\install.ps1
@@ -94,6 +97,9 @@
     assemblies:
       - '**\*.Tests.dll'
       - '**\*.FunctionalTests.dll'
+    categories:
+      except:
+        - Credstash
 
   artifacts:
     - path: '*.nupkg'

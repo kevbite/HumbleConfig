@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HumbleConfig")]
 [assembly: AssemblyProduct("HumbleConfig.MongoDb")]
-[assembly: AssemblyCopyright("Copyright © HumbleConfig 2015")]
+[assembly: AssemblyCopyright("Copyright © HumbleConfig 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumbleConfig", "HumbleConfig\HumbleConfig.csproj", "{B04CB40D-08D8-44C6-B66E-F1ED0E97E507}"
 EndProject
@@ -37,6 +37,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumbleConfig.MongoDb", "HumbleConfig.MongoDb\HumbleConfig.MongoDb.csproj", "{C0FFC254-2495-483A-AA70-1E592148D03E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumbleConfig.MongoDb.Tests", "HumbleConfig.MongoDb.Tests\HumbleConfig.MongoDb.Tests.csproj", "{14D4655C-8E01-4D90-A774-52F37361B041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumbleConfig.Credstash", "HumbleConfig.Credstash\HumbleConfig.Credstash.csproj", "{71683C23-7D6E-45F8-A2B4-D2078C2DA011}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumbleConfig.Credstash.Tests", "HumbleConfig.Credstash.Tests\HumbleConfig.Credstash.Tests.csproj", "{904F63FC-EF8E-4451-B5AC-9DCD0803B915}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,8 +92,19 @@ Global
 		{14D4655C-8E01-4D90-A774-52F37361B041}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14D4655C-8E01-4D90-A774-52F37361B041}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14D4655C-8E01-4D90-A774-52F37361B041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71683C23-7D6E-45F8-A2B4-D2078C2DA011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71683C23-7D6E-45F8-A2B4-D2078C2DA011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71683C23-7D6E-45F8-A2B4-D2078C2DA011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71683C23-7D6E-45F8-A2B4-D2078C2DA011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{904F63FC-EF8E-4451-B5AC-9DCD0803B915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{904F63FC-EF8E-4451-B5AC-9DCD0803B915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{904F63FC-EF8E-4451-B5AC-9DCD0803B915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{904F63FC-EF8E-4451-B5AC-9DCD0803B915}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED37B15D-29C0-4297-9633-06E23E40182A}
 	EndGlobalSection
 EndGlobal

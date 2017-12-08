@@ -28,15 +28,14 @@ namespace HumbleConfig.Tests.KeyFormatters
         [Test]
         public void ThenTheKeyIsPrefixed()
         {
-            Assert.That(_formattedKey, Is.StringStarting(_prefix));
+            Assert.That(_formattedKey, Does.StartWith(_prefix));
         }
 
         [Test]
         public void ThenTheFormattedKeyEndWithTheKey()
         {
-            Assert.That(_formattedKey, Is.StringEnding(_key));
+            Assert.That(_formattedKey, Does.EndWith(_key));
         }
-
 
         [Test]
         public void ThenTheFormattedKeyIsTheCorrectLength()
