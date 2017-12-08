@@ -49,7 +49,7 @@ namespace HumbleConfig.FunctionalTests
         [Test]
         public void ThenKey5PullsFromCredstash()
         {
-            Assert.That(_key2Actual, Is.EqualTo("Credstash"));
+            Assert.That(_key1Actual, Is.EqualTo("Credstash"));
         }
 
         [Test]
