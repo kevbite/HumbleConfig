@@ -51,5 +51,8 @@
       <Name>HumbleConfig</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="HumbleConfig.Caching.nuspec" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
