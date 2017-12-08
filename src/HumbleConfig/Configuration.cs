@@ -6,9 +6,9 @@ using HumbleConfig.KeyFormatters;
 
 namespace HumbleConfig
 {
-    public class Configuration : IConfiguration
+    public class Configuration : IConfiguration, IConfigurationConfigurator
     {
-        private readonly List<IConfigurationSource> _configurationSources = new List<IConfigurationSource>();
+        private readonly List<ConfigurationSourceWrapper> _configurationSources = new List<ConfigurationSourceWrapper>();
         private IKeyFormatter _keyFormatter = new DefaultKeyFormatter();
 
         public async Task<TValue> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
@@ -16,7 +16,7 @@ namespace HumbleConfig
             var formattedKey = _keyFormatter.FormatKey(key);
             foreach (var configurationSource in _configurationSources)
             {
-                var result = await configurationSource.GetAppSettingAsync<TValue>(formattedKey, cancellationToken).ConfigureAwait(false);
+                var result = await configurationSource.Source.GetAppSettingAsync<TValue>(formattedKey, cancellationToken).ConfigureAwait(false);
                 if (result.KeyExists)
                 {
                     return result.Value;
@@ -39,9 +39,13 @@ namespace HumbleConfig
             throw new NotImplementedException();
         }
 
-        public void AddConfigurationSource(IConfigurationSource configurationSource)
+        public IConfigurationSourceConfigurator AddConfigurationSource(IConfigurationSource configurationSource)
         {
-            _configurationSources.Add(configurationSource);
+            var wrapper = new ConfigurationSourceWrapper(this, configurationSource);
+
+            _configurationSources.Add(wrapper);
+
+            return wrapper;
         }
 
         public void SetKeyFormatter(IKeyFormatter keyFormatter)
