@@ -24,6 +24,9 @@ PM> Install-Package HumbleConfig.ConfigR
 ```powershell
 PM> Install-Package HumbleConfig.MongoDb
 ```
+```powershell
+PM> Install-Package HumbleConfig.Credstash
+```
 ### How to use it?
 First, create an `Configuration` instance:
 ```csharp
@@ -34,7 +37,8 @@ Then, configure the sources for configuration:
 configuration.AddEnvironmentVariables()
              .AddConfigurationManager()
 			 .AddConfigR()
-			 .AddMongoDb("mongodb://localhost/settings", "appSettings");
+			 .AddMongoDb("mongodb://localhost/settings", "appSettings")
+			 .AddCredstash(RegionEndpoint.EUWest1);
 ```
 The order in which we add the configuration sources will determine which configuration values will take priority, in the above example environment variables will override any configuration values within mongodb.
 
