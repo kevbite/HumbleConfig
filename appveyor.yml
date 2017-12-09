@@ -3,7 +3,7 @@
     only:
       - master
   skip_tags: true
-  version: 4.0.0
+  version: 4.0.1
   
   assembly_info:
     assembly_version: '{version}'
@@ -59,7 +59,7 @@
 
 -
   skip_tags: true
-  version: 4.0.0-{branch}{build}
+  version: 4.0.1-{branch}{build}
   
   assembly_info:
     assembly_version: '{version}'
