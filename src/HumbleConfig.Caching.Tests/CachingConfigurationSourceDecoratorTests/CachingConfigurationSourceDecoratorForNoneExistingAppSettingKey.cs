@@ -17,7 +17,7 @@ namespace HumbleConfig.Caching.Tests.CachingConfigurationSourceDecoratorTests
             innerSource.Setup(x => x.GetAppSettingAsync<TValue>(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(ConfigurationSourceResult<TValue>.FailedResult());
             
-            var source = new CachingConfigurationSourceDecorator(innerSource.Object, MemoryCache.Default, () => new CacheItemPolicy());
+            var source = new CachingConfigurationSourceDecorator(innerSource.Object, new CacheKeyCreator(Guid.NewGuid().ToString()),  MemoryCache.Default, () => new CacheItemPolicy());
 
             return source;
         }
