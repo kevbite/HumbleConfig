@@ -142,6 +142,7 @@
     <Compile Include="ConfigurationTests.cs" />
     <Compile Include="CredstashConfigurationTests.cs" />
     <Compile Include="ExpiredCacheConfigurationTests.cs" />
+    <Compile Include="MultiCacheConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
