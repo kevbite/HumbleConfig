@@ -29,5 +29,18 @@ namespace HumbleConfig.Credstash
 
             return AddCredstash(configuration, credstashOptions, amazonKeyManagementServiceClient, amazonDynamoDbClient);
         }
+
+        public static IConfigurationSourceConfigurator AddCredstash(this IConfigurationConfigurator configuration, Amazon.RegionEndpoint region)
+        {
+            var credstashOptions = new CredstashOptions()
+            {
+                Region = region
+            };
+
+            var amazonKeyManagementServiceClient = new AmazonKeyManagementServiceClient(region);
+            var amazonDynamoDbClient = new AmazonDynamoDBClient(region);
+
+            return AddCredstash(configuration, credstashOptions, amazonKeyManagementServiceClient, amazonDynamoDbClient);
+        }
     }
 }
