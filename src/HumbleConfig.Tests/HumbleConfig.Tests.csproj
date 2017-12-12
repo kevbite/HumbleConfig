@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyFormatters\KeyPostfixerTests.cs" />
     <Compile Include="NonNullableTestFixtureCases.cs" />
     <Compile Include="ConfigurationSourceTestsForNoneExistingKey`1.cs" />
     <Compile Include="ConfigurationSourceTestsForExistingKey`1.cs" />
