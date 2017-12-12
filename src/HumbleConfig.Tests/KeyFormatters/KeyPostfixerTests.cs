@@ -1,22 +1,27 @@
-﻿using HumbleConfig.KeyFormatters;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using HumbleConfig.KeyFormatters;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests.KeyFormatters
 {
     [TestFixture]
-    public class KeyPrefixerTests
+    public class KeyPostfixerTests
     {
-        private KeyPrefixer _formatter;
+        private KeyPostfixer _formatter;
         private string _key;
         private string _formattedKey;
-        private string _prefix;
+        private string _postfix;
 
         [OneTimeSetUp]
         public void GivenAKeyPrefixer()
         {
-            _prefix = new Fixture().Create<string>();
-            _formatter = new KeyPrefixer(_prefix);
+            _postfix = new Fixture().Create<string>();
+            _formatter = new KeyPostfixer(_postfix);
         }
 
         [SetUp]
@@ -29,19 +34,19 @@ namespace HumbleConfig.Tests.KeyFormatters
         [Test]
         public void ThenTheKeyIsPrefixed()
         {
-            Assert.That(_formattedKey, Does.StartWith(_prefix));
+            Assert.That(_formattedKey, Does.EndWith(_postfix));
         }
 
         [Test]
         public void ThenTheFormattedKeyEndWithTheKey()
         {
-            Assert.That(_formattedKey, Does.EndWith(_key));
+            Assert.That(_formattedKey, Does.StartWith(_key));
         }
 
         [Test]
         public void ThenTheFormattedKeyIsTheCorrectLength()
         {
-            var expectedLength = _key.Length + _prefix.Length;
+            var expectedLength = _key.Length + _postfix.Length;
 
             Assert.That(_formattedKey.Length, Is.EqualTo(expectedLength));
         }
