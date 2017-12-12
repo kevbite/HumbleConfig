@@ -8,19 +8,21 @@ namespace HumbleConfig.Caching
     public class CachingConfigurationSourceDecorator : IConfigurationSource
     {
         private readonly IConfigurationSource _innerSource;
+        private readonly ICacheKeyCreator _cacheKeyCreator;
         private readonly ObjectCache _objectCache;
         private readonly Func<CacheItemPolicy> _cacheItemPolicyFactory;
 
-        public CachingConfigurationSourceDecorator(IConfigurationSource innerSource, ObjectCache objectCache, Func<CacheItemPolicy> cacheItemPolicyFactoryFactory)
+        public CachingConfigurationSourceDecorator(IConfigurationSource innerSource, ICacheKeyCreator cacheKeyCreator, ObjectCache objectCache, Func<CacheItemPolicy> cacheItemPolicyFactoryFactory)
         {
             _innerSource = innerSource;
+            _cacheKeyCreator = cacheKeyCreator;
             _objectCache = objectCache;
             _cacheItemPolicyFactory = cacheItemPolicyFactoryFactory;
         }
 
         public async Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var appsetting = (ConfigurationSourceResult<TValue>)_objectCache.Get(CreateCacheKey(key));
+            var appsetting = (ConfigurationSourceResult<TValue>)_objectCache.Get(_cacheKeyCreator.CreateCacheKey(key));
 
             if (appsetting == null)
             {
@@ -32,15 +34,11 @@ namespace HumbleConfig.Caching
 
             return appsetting;
         }
-
-        private static string CreateCacheKey(string key)
-        {
-            return $"HumbleConfig-{key}";
-        }
+        
 
         private CacheItem CreateCacheItem<TValue>(string key, ConfigurationSourceResult<TValue> value)
         {
-            return new CacheItem(CreateCacheKey(key), value);
+            return new CacheItem(_cacheKeyCreator.CreateCacheKey(key), value);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace HumbleConfig.Caching.Tests.CachingConfigurationSourceDecoratorTests
                 .ReturnsAsync(ConfigurationSourceResult<TValue>.SuccessResult(expectedValue))
                 .Throws(new Exception("Should never get here"));
             
-            var source = new CachingConfigurationSourceDecorator(innerSource.Object, MemoryCache.Default, () => new CacheItemPolicy());
+            var source = new CachingConfigurationSourceDecorator(innerSource.Object, new CacheKeyCreator(Guid.NewGuid().ToString()), MemoryCache.Default, () => new CacheItemPolicy());
             source.GetAppSettingAsync<TValue>(key, cancellationToken).Wait();
 
             return source;

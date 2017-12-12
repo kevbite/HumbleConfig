@@ -21,7 +21,7 @@ namespace HumbleConfig.Caching.Tests.CachingConfigurationSourceDecoratorTests
             innerSource.Setup(x => x.GetAppSettingAsync<TValue>(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .Throws(new Exception("Should never get here"));
 
-            var source = new CachingConfigurationSourceDecorator(innerSource.Object, objectCache.Object, () => new CacheItemPolicy());
+            var source = new CachingConfigurationSourceDecorator(innerSource.Object, new CacheKeyCreator(Guid.NewGuid().ToString()), objectCache.Object, () => new CacheItemPolicy());
             
             return source;
         }

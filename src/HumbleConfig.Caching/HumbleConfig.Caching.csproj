@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheKeyCreator.cs" />
     <Compile Include="CachingExtentions.cs" />
     <Compile Include="CachingConfigurationSourceDecorator.cs" />
+    <Compile Include="ICacheKeyCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
