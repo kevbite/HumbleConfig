@@ -62,7 +62,7 @@ var value = await configuration.GetAppSettingAysnc<string>("key");
 Ever been in config hell where you don't know what key is used where.
 This is where key formatters comes in useful, HumbleConfig has inbuilt support for a few key formatters.
 
-#### KeyPrefixer
+##### KeyPrefixer
 The key prefixer allows you to specify a prefix that all your config keys should include.
 For example having a prefix of `HumbleConfig:` would have the following output:
 
@@ -76,6 +76,29 @@ To setup this the key prefixer on our configuration object we just call `WithKey
 ```csharp
 configuration.WithKeyPrefixer("HumbleConfig:")
 ```
+
+##### KeyPostfixer
+The key postfixer allows you to specify a postfix that all your config keys should include.
+For example having a postfix of `.HumbleConfig` would have the following output:
+
+| Key    | Source Key        |
+| -------|------------------ |
+| Key1   | Key1.HumbleConfig |
+| Key2   | Key2.HumbleConfig |
+| Key3   | Key3.HumbleConfig |
+
+To setup this the key postfixer on our configuration object we just call `WithKeyPostfixer`:
+```csharp
+configuration.WithKeyPostfixer(".HumbleConfig")
+```
+
+#### Key formatters on sources
+
+It is also possible to use key formatter on individual sources, for example:
+```
+configuration.AddEnvironmentVariables().WithKeyPostfixer(".production")
+```
+This will only apply the key formatter to the environment variables source.
 
 ### Contributing
 
