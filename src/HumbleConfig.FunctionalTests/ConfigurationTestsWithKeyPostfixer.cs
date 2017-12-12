@@ -7,18 +7,18 @@ using NUnit.Framework;
 namespace HumbleConfig.FunctionalTests
 {
     [TestFixture]
-    public class ConfigurationTestsWithKeyPrefixer
+    public class ConfigurationTestsWithKeyPostfixer
     {
         private IConfiguration _configuration;
-        
+
         private string _key1Actual;
-        
+
         [OneTimeSetUp]
-        public void GivenConfigurationWithKeyPrefixer()
+        public void GivenConfigurationWithKeyPostfixer()
         {
             _configuration = new Configuration()
-                .WithKeyPrefixer("HumbleConfig:")
-                .AddInMemory(new Dictionary<string, object>() { { "HumbleConfig:Key1", "InMemory"} })
+                .WithKeyPostfixer(".production")
+                .AddInMemory(new Dictionary<string, object>() { { "Key1.production", "InMemory" } })
                 .GetConfiguration();
         }
 

@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CacheConfigurationTests.cs" />
+    <Compile Include="ConfigurationTestsWithKeyPostfixer.cs" />
     <Compile Include="ConfigurationTestsWithKeyPrefixer.cs" />
     <Compile Include="ConfigurationTests.cs" />
     <Compile Include="CredstashConfigurationTests.cs" />
