@@ -4,6 +4,7 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests.KeyFormatters
 {
+    [TestFixture]
     public class KeyPrefixerTests
     {
         private KeyPrefixer _formatter;

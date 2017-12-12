@@ -9,6 +9,7 @@ using Ploeh.AutoFixture;
 
 namespace HumbleConfig.Tests.KeyFormatters
 {
+    [TestFixture]
     public class KeyPostfixerTests
     {
         private KeyPostfixer _formatter;
