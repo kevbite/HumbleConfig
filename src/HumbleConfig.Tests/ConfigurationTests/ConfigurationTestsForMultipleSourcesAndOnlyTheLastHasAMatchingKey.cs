@@ -1,4 +1,5 @@
-﻿using HumbleConfig.Tests.Stubs;
+﻿
+using HumbleConfig.Tests.Stubs;
 using NUnit.Framework;
 using Ploeh.AutoFixture;
 

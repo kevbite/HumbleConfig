@@ -25,6 +25,7 @@ namespace HumbleConfig.FunctionalTests
         private string key5 = "key5";
         private string key6 = "key6";
         private string key7 = "key7";
+        private string key8 = "key7";
 
         private string _key1Actual;
         private string _key2Actual;
@@ -53,6 +54,7 @@ namespace HumbleConfig.FunctionalTests
                 .AddInMemory(new Dictionary<string, object>() { {key5, "InMemory"} })
                 .AddConfigR(Config.Global.LoadScriptFile(new Uri(Assembly.GetExecutingAssembly().CodeBase + ".csx").LocalPath))
                 .AddMongoDb($"mongodb://localhost/{_mongoCollection.Database.DatabaseNamespace}", "appSettings")
+                .AddInMemory(new Dictionary<string, object>(){{key8 + ".test", "InMemory"}})
                 .GetConfiguration();
         }
 
