@@ -16,7 +16,9 @@ namespace HumbleConfig.Credstash
 
         public async Task<ConfigurationSourceResult<TValue>> GetAppSettingAsync<TValue>(string key, CancellationToken cancellationToken = default(CancellationToken))
         {
-            var credstashValue = await _credstash.GetSecretAsync(key);
+            var credstashValue = await _credstash.GetSecretAsync(key)
+                .ConfigureAwait(false);
+
             if (credstashValue.HasNoValue)
             {
                 return ConfigurationSourceResult<TValue>.FailedResult();

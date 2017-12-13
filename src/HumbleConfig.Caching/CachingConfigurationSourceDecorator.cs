@@ -26,7 +26,8 @@ namespace HumbleConfig.Caching
 
             if (appsetting == null)
             {
-                appsetting = await _innerSource.GetAppSettingAsync<TValue>(key, cancellationToken);
+                appsetting = await _innerSource.GetAppSettingAsync<TValue>(key, cancellationToken)
+                    .ConfigureAwait(false);
 
                 var cacheItemPolicy = _cacheItemPolicyFactory();
                 _objectCache.Add(CreateCacheItem(key, appsetting), cacheItemPolicy);
